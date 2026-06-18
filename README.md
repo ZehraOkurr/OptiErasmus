@@ -205,10 +205,10 @@ OptiErasmus/
 
 | **Özellik / Sayfa** | **Önizleme Görseli** |
 |---|---|
-| **Yönetici Gösterge Paneli (Dashboard)** | ![Gösterge Paneli Arayüzü](screenshots/hero_landing.png) |
-| **BWM Tercih Anketi - Adım 1 (Kriter İnceleme)** | ![BWM Tercih Anketi Adım 1](screenshots/bwm_wizard_step1.png) |
-| **BWM Tercih Anketi - Adım 2 (Öncelik Seçimi)** | ![BWM Tercih Anketi Adım 2](screenshots/bwm_wizard_step2.png) |
-| **BWM Tercih Anketi - Adım 3 (Kıyaslama ve Puanlama)** | ![BWM Tercih Anketi Adım 3](screenshots/bwm_wizard_step3.png) |
+| **Yönetici Gösterge Paneli (Dashboard)** | ![Gösterge Paneli Arayüzü](göstergepaneli.png) |
+| **BWM Tercih Anketi - Adım 1 (Kriter İnceleme)** | ![BWM Tercih Anketi Adım 1](anket1.png) |
+| **BWM Tercih Anketi - Adım 2 (Öncelik Seçimi)** | ![BWM Tercih Anketi Adım 2](anket2.png) |
+| **BWM Tercih Anketi - Adım 3 (Kıyaslama ve Puanlama)** | ![BWM Tercih Anketi Adım 3](anket3.png) |
 
 ---
 
