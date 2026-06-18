@@ -1,0 +1,720 @@
+@page "/anket"
+@model OptiErasmus.Pages.AnketModel
+@{
+    ViewData["Title"] = "BWM Tercih Anketi";
+}
+
+<!-- Bootstrap Icons & ApexCharts -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+<style>
+    :root {
+        --primary-bg: var(--bg-color);
+        --brand-color: var(--accent-orange);
+        --brand-hover: #e09900;
+        --worst-color: var(--accent-coral);
+        --best-color: #2b9348;
+    }
+    
+    body {
+        background-color: var(--primary-bg);
+    }
+
+    .wizard-card {
+        background: #ffffff;
+        border-radius: 20px;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+        padding: 40px;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .step-indicator {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 40px;
+        position: relative;
+    }
+
+    .step-indicator::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: #e2e8f0;
+        z-index: 1;
+        transform: translateY(-50%);
+        border-radius: 10px;
+    }
+
+    .step-indicator .progress-line {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        height: 4px;
+        background: var(--brand-color);
+        z-index: 2;
+        transform: translateY(-50%);
+        transition: width 0.4s ease;
+        border-radius: 10px;
+        width: 0%;
+    }
+
+    .step-dot {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #e2e8f0;
+        color: #718096;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        z-index: 3;
+        position: relative;
+        transition: all 0.4s ease;
+    }
+
+    .step-dot.active {
+        background: var(--brand-color);
+        color: white;
+        box-shadow: 0 0 0 5px rgba(67, 97, 238, 0.2);
+    }
+    
+    .step-dot.completed {
+        background: var(--brand-color);
+        color: white;
+    }
+
+    .wizard-step {
+        display: none;
+        animation: fadeIn 0.5s;
+    }
+
+    .wizard-step.active {
+        display: block;
+    }
+
+    @@keyframes fadeIn {
+        from { opacity: 0; transform: translateY(15px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .criteria-box {
+        border: 2px solid #edf2f7;
+        border-radius: 15px;
+        padding: 20px;
+        text-align: center;
+        transition: all 0.2s ease;
+        height: 100%;
+        background: #fff;
+    }
+    
+    .criteria-box:hover {
+        border-color: #cbd5e0;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+
+    .criteria-icon {
+        font-size: 2.5rem;
+        margin-bottom: 10px;
+        color: var(--brand-color);
+    }
+
+    .slider-container {
+        background: #f8fafc;
+        border-radius: 15px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border: 1px solid #e2e8f0;
+        transition: border-color 0.3s;
+    }
+    
+    .slider-container:hover {
+        border-color: #cbd5e0;
+    }
+
+    .form-range::-webkit-slider-thumb {
+        background: var(--brand-color);
+    }
+
+    .scale-labels {
+        display: flex;
+        justify-content: space-between;
+        font-size: 0.8rem;
+        color: #718096;
+        margin-top: 8px;
+        font-weight: 600;
+    }
+
+    .btn-select-criteria {
+        transition: all 0.2s;
+        border-width: 2px;
+    }
+    
+    .btn-select-criteria:hover {
+        transform: scale(1.02);
+    }
+</style>
+
+
+<div class="container py-5 max-w-4xl" id="wizardMain">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-dark">BWM Tercih Anketi</h1>
+        <p class="text-muted fs-5">Senin için en ideal şehri bulabilmemiz için 3 kısa adım.</p>
+    </div>
+
+    <div class="wizard-card mx-auto" style="max-width: 800px;">
+        <div class="step-indicator">
+            <div class="progress-line" id="progressLine"></div>
+            <div class="step-dot active" id="dot1">1</div>
+            <div class="step-dot" id="dot2">2</div>
+            <div class="step-dot" id="dot3">3</div>
+        </div>
+
+        <!-- ADIM 1: KRİTERLERİ SUNMA -->
+        <div class="wizard-step active" id="step1">
+            <h3 class="fw-bold mb-3 text-center">Adım 1: Kriterleri İncele</h3>
+            <p class="text-center text-muted mb-4">Şehir seçiminde aşağıdaki 4 ana kriteri değerlendireceğiz. Lütfen öncelikle kriterlere göz atın.</p>
+            
+            <div class="row g-4" id="criteriaListDisplay">
+                <!-- JS tarafından doldurulacak -->
+            </div>
+
+            <div class="text-center mt-5">
+                <button class="btn btn-primary btn-lg px-5 py-3 rounded-pill fw-bold shadow-sm" onclick="nextStep(2)">
+                    İnceledim, Başlayalım <i class="bi bi-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ADIM 2: EN İYİ VE EN KÖTÜ SEÇİMİ -->
+        <div class="wizard-step" id="step2">
+            <h3 class="fw-bold mb-2 text-center">Adım 2: Önceliklerini Belirle</h3>
+            <p class="text-center text-muted mb-4">Senin için <strong class="text-success">en önemli (En İyi)</strong> ve <strong class="text-danger">en önemsiz (En Kötü)</strong> kriteri seç.</p>
+            
+            <div class="row align-items-center mb-4 text-center">
+                <div class="col-md-5">
+                    <h5 class="text-success fw-bold"><i class="bi bi-star-fill me-2"></i>En Önemli Kriter</h5>
+                    <div id="bestSelection" class="d-flex flex-column gap-2 mt-3">
+                        <!-- JS tarafından üretilecek -->
+                    </div>
+                </div>
+                <div class="col-md-2 text-muted fw-bold d-none d-md-block fs-4">VS</div>
+                <div class="col-md-5">
+                    <h5 class="text-danger fw-bold"><i class="bi bi-x-circle-fill me-2"></i>En Önemsiz Kriter</h5>
+                    <div id="worstSelection" class="d-flex flex-column gap-2 mt-3">
+                        <!-- JS tarafından üretilecek -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-between mt-5">
+                <button class="btn btn-outline-secondary rounded-pill px-4 py-2 fw-bold" onclick="prevStep(1)">
+                    <i class="bi bi-arrow-left me-2"></i> Geri
+                </button>
+                <button class="btn btn-primary rounded-pill px-4 py-2 fw-bold" id="btnNextStep3" onclick="nextStep(3)" disabled>
+                    Puanlamaya Geç <i class="bi bi-arrow-right ms-2"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- ADIM 3: PUANLAMA (BWM) -->
+        <div class="wizard-step" id="step3">
+            <h3 class="fw-bold mb-2 text-center">Adım 3: Önem Derecelerini Puanla</h3>
+            <p class="text-center text-muted mb-4">Kriterler arasındaki 1-9 önem puanını belirle.</p>
+            
+            <div class="alert alert-success bg-opacity-10 border-success mb-4" role="alert">
+                <i class="bi bi-info-circle-fill me-2"></i> <strong>1:</strong> Eşit Önemde, <strong>5:</strong> Kuvvetli, <strong>9:</strong> Mutlak Üstünlük
+            </div>
+
+            <div id="bo-sliders-container">
+               <!-- JS tarafından üretilecek -->
+            </div>
+
+            <hr class="my-4" />
+
+            <div id="ow-sliders-container">
+               <!-- JS tarafından üretilecek -->
+            </div>
+
+            <div class="alert alert-info mt-4" role="alert" id="summaryAlert" style="display:none;"></div>
+
+            <div class="d-flex justify-content-between mt-5">
+                <button class="btn btn-outline-secondary rounded-pill px-4 py-2 fw-bold" onclick="prevStep(2)">
+                    <i class="bi bi-arrow-left me-2"></i> Geri
+                </button>
+                <button class="btn btn-success rounded-pill px-4 py-2 fw-bold shadow-sm" onclick="submitBWM()">
+                    <i class="bi bi-check-circle me-2"></i> Analizi Tamamla
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- RESULTS DASHBOARD -->
+<div class="container py-5 max-w-4xl" id="resultsDashboard" style="display:none; animation: fadeIn 0.8s;">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold text-success"><i class="bi bi-award-fill"></i> Analiz Tamamlandı</h1>
+        <p class="text-muted fs-5">Üniversite ve şehir skorları, GDELT 100.000'den fazla veri kullanılarak hesaplandı.</p>
+    </div>
+
+    <!-- AI EXPLANATION -->
+    <div class="card shadow-sm border-0 rounded-4 mb-4" style="border-left: 5px solid var(--brand-color) !important;">
+        <div class="card-body p-4">
+            <h4 class="fw-bold mb-3" style="color: var(--brand-color)"><i class="bi bi-robot"></i> Neden Bu Sonuç Çıktı?</h4>
+            <p class="fs-5 text-dark" id="aiExplanation" style="line-height: 1.6;"></p>
+        </div>
+    </div>
+
+    <!-- CHARTS -->
+    <div class="row g-4 mb-4">
+        <!-- BAR CHART -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-1">En İyi Üniversiteler (Q Skoru)</h5>
+                    <p class="text-muted small">VIKOR Uzlaşma İndeksi (Düşük = İyi)</p>
+                    <div id="barChart" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+        <!-- LINE CHART (SENSITIVITY) -->
+        <div class="col-lg-6">
+            <div class="card shadow-sm border-0 rounded-4 h-100">
+                <div class="card-body p-4">
+                    <h5 class="fw-bold mb-1">Duyarlılık Analizi (v=0.0 → 1.0)</h5>
+                    <p class="text-muted small">v (Fayda/Pişmanlık Ağırlığı) değiştikçe sıralama değişimi</p>
+                    <div id="lineChart" class="mt-3"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEATMAP -->
+    <div class="card shadow-sm border-0 rounded-4 mb-5">
+        <div class="card-body p-4">
+            <h5 class="fw-bold mb-1">Kriter Bazlı Performans (Isı Haritası)</h5>
+            <p class="text-muted small">Şehirlerin Seçili Kriterlerdeki Göreceli Performansı (1-100)</p>
+            <div id="heatmapChart" class="mt-3"></div>
+        </div>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-primary shadow-sm" id="btnDownloadPdf" onclick="downloadPDF()" style="display:none;">
+            <i class="bi bi-file-earmark-pdf-fill me-2"></i> Kişiselleştirilmiş Yol Haritanı İndir (PDF)
+        </button>
+    </div>
+
+    <div class="text-center mt-4">
+        <button class="btn btn-primary shadow-sm" onclick="location.reload()">
+            <i class="bi bi-arrow-repeat me-2"></i> Yeni Bir Analiz Yap
+        </button>
+    </div>
+</div>
+
+<script>
+    let state = {
+    best: null,
+    worst: null,
+    latestCities: null 
+    };
+
+    const scaleDescriptions = {
+    1: "Eşit Önemde",
+    2: "Eşit / Biraz Fazla",
+    3: "Biraz Daha Önemli",
+    4: "Biraz / Kuvvetli",
+    5: "Kuvvetli Derecede",
+    6: "Kuvvetli / Çok Kuvvetli",
+    7: "Çok Kuvvetli",
+    8: "Çok Kuvvetli / Mutlak",
+    9: "Mutlak Önemli"
+    };
+
+    const criteriaData = [
+    { id: 'cost', name: 'Yaşam Maliyeti', icon: 'bi-wallet2', desc: 'Ev kirası, gıda ve ulaşım' },
+    { id: 'security', name: 'Güvenlik', icon: 'bi-shield-check', desc: 'Genel asayiş ve sosyal huzur' },
+    { id: 'academic', name: 'Akademik Başarı', icon: 'bi-book-half', desc: 'Eğitim kalitesi ve sıralamalar' },
+    { id: 'social', name: 'Sosyal Yaşam', icon: 'bi-people', desc: 'Kültürel etkinlikler, şehir hayatı' }
+    ];
+
+    function init() {
+    renderCriteriaList();
+    renderSelectionLists();
+    }
+
+    function renderCriteriaList() {
+    const container = document.getElementById('criteriaListDisplay');
+    container.innerHTML = '';
+    criteriaData.forEach(c => {
+    container.innerHTML += `
+    <div class="col-md-6">
+    <div class="criteria-box">
+    <i class="bi ${c.icon} criteria-icon"></i>
+    <h5 class="fw-bold fs-5 mt-2">${c.name}</h5>
+    <p class="text-muted small mb-0">${c.desc}</p>
+    </div>
+    </div>
+    `;
+    });
+    }
+
+    function renderSelectionLists() {
+    const bestContainer = document.getElementById('bestSelection');
+    const worstContainer = document.getElementById('worstSelection');
+    bestContainer.innerHTML = '';
+    worstContainer.innerHTML = '';
+
+    criteriaData.forEach(c => {
+    const bestBtn = document.createElement('button');
+    bestBtn.className = `btn btn-select-criteria text-start fw-bold w-100 py-3 ${state.best === c.id ? 'btn-success' : 'btn-outline-success'} ${state.worst === c.id ? 'disabled opacity-50' : ''}`;
+    bestBtn.innerHTML = `<i class="bi ${c.icon} me-2 fs-5 align-middle"></i> ${c.name}`;
+    bestBtn.onclick = () => selectBest(c.id);
+    bestContainer.appendChild(bestBtn);
+
+    const worstBtn = document.createElement('button');
+    worstBtn.className = `btn btn-select-criteria text-start fw-bold w-100 py-3 ${state.worst === c.id ? 'btn-danger' : 'btn-outline-danger'} ${state.best === c.id ? 'disabled opacity-50' : ''}`;
+    worstBtn.innerHTML = `<i class="bi ${c.icon} me-2 fs-5 align-middle"></i> ${c.name}`;
+    worstBtn.onclick = () => selectWorst(c.id);
+    worstContainer.appendChild(worstBtn);
+    });
+
+    checkStep2Validity();
+    }
+
+    function selectBest(id) {
+    if (state.worst === id) return;
+    state.best = id;
+    renderSelectionLists();
+    }
+
+    function selectWorst(id) {
+    if (state.best === id) return;
+    state.worst = id;
+    renderSelectionLists();
+    }
+
+    function checkStep2Validity() {
+    const btnNext = document.getElementById('btnNextStep3');
+    if (state.best && state.worst && state.best !== state.worst) {
+    btnNext.disabled = false;
+    } else {
+    btnNext.disabled = true;
+    }
+    }
+
+    function generateSliders() {
+    const boContainer = document.getElementById('bo-sliders-container');
+    const owContainer = document.getElementById('ow-sliders-container');
+    boContainer.innerHTML = '';
+    owContainer.innerHTML = '';
+
+    const bestObj = criteriaData.find(c => c.id === state.best);
+    const worstObj = criteriaData.find(c => c.id === state.worst);
+
+    boContainer.innerHTML += `<h5 class="fw-bold text-success mb-3"><i class="bi bi-star-fill"></i> '${bestObj.name}' Kriterinin Üstünlüğü</h5>`;
+
+    criteriaData.forEach(c => {
+    if (c.id === state.best) return;
+    let emphasis = c.id === state.worst ? "text-danger" : "";
+    let sub = c.id === state.worst ? " (En Kötü)" : "";
+
+    boContainer.innerHTML += createSliderHTML(
+    `bo_${c.id}`,
+    `<span class="text-success fw-bold">${bestObj.name}</span>, <span class="fw-bold ${emphasis}">${c.name}${sub}</span> kriterinden <strong>ne kadar daha önemli?</strong>`,
+    `updateSliderLabel('bo_${c.id}')`
+    );
+    });
+
+    owContainer.innerHTML += `<h5 class="fw-bold text-danger mb-3 mt-4"><i class="bi bi-x-circle-fill"></i> Diğerlerinin '${worstObj.name}' Kriterine Üstünlüğü</h5>`;
+
+    criteriaData.forEach(c => {
+    if (c.id === state.best || c.id === state.worst) return;
+
+    owContainer.innerHTML += createSliderHTML(
+    `ow_${c.id}`,
+    `<span class="fw-bold">${c.name}</span>, <span class="text-danger fw-bold">${worstObj.name}</span> kriterinden <strong>ne kadar daha önemli?</strong>`,
+    `updateSliderLabel('ow_${c.id}')`
+    );
+    });
+
+    criteriaData.forEach(c => {
+    if (c.id !== state.best) updateSliderLabel(`bo_${c.id}`);
+    if (c.id !== state.best && c.id !== state.worst) updateSliderLabel(`ow_${c.id}`);
+    });
+    }
+
+    function createSliderHTML(id, label, onChange) {
+    return `
+    <div class="slider-container">
+    <label class="form-label d-block mb-3 ms-2 fs-6">${label}</label>
+    <div class="px-2">
+    <input type="range" class="form-range" min="1" max="9" step="1" value="1" id="${id}" oninput="${onChange}">
+    <div class="scale-labels">
+    <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span>
+    </div>
+    </div>
+    <div class="text-center mt-3 fw-bold ps-3 py-1 rounded bg-white border" style="font-size:0.95rem; color:var(--brand-color);" id="${id}_label">Eşit Önemde</div>
+    </div>
+    `;
+    }
+
+    function updateSliderLabel(id) {
+    const val = document.getElementById(id).value;
+    const labelEl = document.getElementById(`${id}_label`);
+    labelEl.innerHTML = `<span class="badge bg-primary rounded-pill me-2 fs-6 px-3 py-2">${val}</span> ${scaleDescriptions[val]}`;
+    }
+
+    function nextStep(step) {
+    if (step === 3) generateSliders();
+
+    document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+    document.getElementById('step' + step).classList.add('active');
+
+    document.querySelectorAll('.step-dot').forEach((el, index) => {
+    if (index + 1 < step) {
+    el.classList.add('completed');
+    el.classList.remove('active');
+    el.innerHTML = '<i class="bi bi-check-lg"></i>';
+    } else if (index + 1 === step) {
+    el.classList.add('active');
+    el.classList.remove('completed');
+    el.innerHTML = index + 1;
+    } else {
+    el.classList.remove('active', 'completed');
+    el.innerHTML = index + 1;
+    }
+    });
+
+    const progressPercent = ((step - 1) / 2) * 100;
+    document.getElementById('progressLine').style.width = progressPercent + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function prevStep(step) {
+    document.querySelectorAll('.wizard-step').forEach(el => el.classList.remove('active'));
+    document.getElementById('step' + step).classList.add('active');
+
+    document.querySelectorAll('.step-dot').forEach((el, index) => {
+    if (index + 1 < step) {
+    el.classList.add('completed');
+    el.classList.remove('active');
+    el.innerHTML = '<i class="bi bi-check-lg"></i>';
+    } else if (index + 1 === step) {
+    el.classList.add('active');
+    el.classList.remove('completed');
+    el.innerHTML = index + 1;
+    } else {
+    el.classList.remove('active', 'completed');
+    el.innerHTML = index + 1;
+    }
+    });
+
+    const progressPercent = ((step - 1) / 2) * 100;
+    document.getElementById('progressLine').style.width = progressPercent + '%';
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    async function submitBWM() {
+    const result = {
+    best: state.best,
+    worst: state.worst,
+    bestToOthers: {},
+    othersToWorst: {}
+    };
+
+    criteriaData.forEach(c => {
+    if (c.id !== state.best) {
+    result.bestToOthers[c.id] = parseInt(document.getElementById(`bo_${c.id}`).value);
+    }
+    if (c.id !== state.best && c.id !== state.worst) {
+    result.othersToWorst[c.id] = parseInt(document.getElementById(`ow_${c.id}`).value);
+    }
+    });
+
+    result.bestToOthers[state.best] = 1;
+    result.othersToWorst[state.worst] = 1;
+    result.othersToWorst[state.best] = result.bestToOthers[state.worst];
+
+    console.log("BWM Puanlama Özeti:", result);
+
+    let alertBox = document.getElementById("summaryAlert");
+    alertBox.className = "alert alert-primary mt-4 border-primary";
+    alertBox.style.display = "block";
+    alertBox.innerHTML = `<strong>Harika!</strong> Tercihleriniz işleniyor. Veri entegrasyonu tamamlanıyor ve VIKOR algoritması hesaplanıyor... Lütfen bekleyin <div class='spinner-border spinner-border-sm text-primary ms-2' role='status'></div>`;
+
+    try {
+    const response = await fetch('/Anket', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(result)
+    });
+
+    if (response.ok) {
+    const data = await response.json();
+    console.log("VIKOR Sonucu:", data);
+
+    document.getElementById('wizardMain').style.display = 'none';
+    document.getElementById('resultsDashboard').style.display = 'block';
+
+    renderDashboard(data);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    } else {
+    let err = await response.text();
+    alertBox.className = "alert alert-danger mt-4 border-danger";
+    alertBox.innerHTML = `<strong>Hata:</strong> Bir sorun oluştu. ${err}`;
+    }
+    } catch (error) {
+    alertBox.className = "alert alert-danger mt-4 border-danger";
+    alertBox.innerHTML = `<strong>Hata:</strong> Sunucuya bağlanılamadı. ${error}`;
+    }
+    }
+
+    function renderDashboard(data) {
+    // Gelen listeyi indirme fonksiyonu için hafızaya alıyoruz
+    state.latestCities = data.cities;
+
+    // PDF İndirme butonunu görünür hale getiriyoruz
+    const pdfBtn = document.getElementById('btnDownloadPdf');
+    if (pdfBtn) pdfBtn.style.display = 'inline-block';
+
+    const topCities = data.cities.slice(0, 5);
+    const bestCity = topCities[0];
+
+    const bestCritObj = criteriaData.find(c => c.id === state.best);
+    const worstCritObj = criteriaData.find(c => c.id === state.worst);
+
+    let explanation = `Karar sürecinizde ağırlıklı olarak <strong class="text-success">${bestCritObj.name}</strong> faktörünü merkeze aldınız ve <strong class="text-danger">${worstCritObj.name}</strong> konusuna en az seviyede duyarlı olduğunuzu belirttiniz. <br><br>
+    Bu tercih setiniz; veritabanındaki analiz satırlarının BWM (Best-Worst Method) katsayılarıyla çaprazlanması sonucunda işlendi ve <strong>🥇 ${bestCity.cityName}</strong> şehri (ve bağlantılı üniversite koşulları) açık ara "En İdeal Opsiyon" olarak öne çıktı. <br><br>
+    <strong>Neden ${bestCity.cityName}?</strong> Çünkü VIKOR algoritması, adayın sizin beklentilerinize en uygun "Maksimum Grup Faydası"nı sunarken sizi en az üzecek "Minimum Pişmanlık (R)" oranına sahip olduğunu bilimsel olarak kanıtlıyor (Ana Q Skoru = ${bestCity.q_Score.toFixed(4)}).`;
+
+    document.getElementById('aiExplanation').innerHTML = explanation;
+
+    var barOptions = {
+    series: [{ name: 'VIKOR Q Skoru', data: topCities.map(c => c.q_Score) }],
+    chart: { type: 'bar', height: 320, toolbar: { show: false } },
+    plotOptions: { bar: { borderRadius: 4, horizontal: true, distributed: true } },
+    tooltip: { y: { formatter: function (val) { return val + " (En Düşük En İyi)" } } },
+    dataLabels: { enabled: true, style: { colors: ['#fff'] } },
+    xaxis: { categories: topCities.map(c => c.cityName) },
+    colors: ['#2B9348', '#3f37c9', '#4361ee', '#4cc9f0', '#7209b7'],
+    legend: { show: false }
+    };
+    new ApexCharts(document.querySelector("#barChart"), barOptions).render();
+
+    const allCities = data.cities;
+    const sStar = Math.min(...allCities.map(c => c.s_Score));
+    const sMin = Math.max(...allCities.map(c => c.s_Score));
+    const rStar = Math.min(...allCities.map(c => c.r_Score));
+    const rMin = Math.max(...allCities.map(c => c.r_Score));
+
+    const vValues = [0.0, 0.2, 0.5, 0.8, 1.0];
+    const lineSeries = [];
+
+    topCities.forEach(c => {
+    let dataPoints = [];
+    vValues.forEach(v => {
+    let qS = (sMin - sStar) === 0 ? 0 : v * (c.s_Score - sStar) / (sMin - sStar);
+    let qR = (rMin - rStar) === 0 ? 0 : (1 - v) * (c.r_Score - rStar) / (rMin - rStar);
+    dataPoints.push((qS + qR).toFixed(3));
+    });
+    lineSeries.push({ name: c.cityName, data: dataPoints });
+    });
+
+    var lineOptions = {
+    series: lineSeries,
+    chart: { type: 'line', height: 320, zoom: { enabled: false }, toolbar: { show: false } },
+    stroke: { curve: 'smooth', width: 3 },
+    xaxis: { categories: ['v=0.0', 'v=0.2', 'v=0.5', 'v=0.8', 'v=1.0'] },
+    yaxis: { title: { text: "Q Skoru (Düşük İyi)" }, min: 0, max: 1 },
+    markers: { size: 5 },
+    tooltip: { shared: true, intersect: false }
+    };
+    new ApexCharts(document.querySelector("#lineChart"), lineOptions).render();
+
+    var heatmapSeries = [
+    { name: 'Sosyal', data: [] },
+    { name: 'Akademik', data: [] },
+    { name: 'Güvenlik', data: [] },
+    { name: 'Ekonomi', data: [] }
+    ];
+
+    topCities.forEach(c => {
+    heatmapSeries[0].data.push({ x: c.cityName, y: c.socialScore });
+    heatmapSeries[1].data.push({ x: c.cityName, y: c.academicScore });
+    heatmapSeries[2].data.push({ x: c.cityName, y: c.securityScore });
+    heatmapSeries[3].data.push({ x: c.cityName, y: c.economyScore });
+    });
+
+    var heatOptions = {
+    series: heatmapSeries,
+    chart: { height: 320, type: 'heatmap', toolbar: { show: false } },
+    plotOptions: {
+    heatmap: {
+    shadeIntensity: 0.5,
+    radius: 4,
+    useFillColorAsStroke: false,
+    colorScale: {
+    ranges: [
+    { from: 0, to: 55, name: 'Riskli (<55)', color: '#EF233C' },
+    { from: 56, to: 75, name: 'Orta (56-75)', color: '#F18701' },
+    { from: 76, to: 100, name: 'Güçlü (>75)', color: '#2B9348' }
+    ]
+    }
+    }
+    },
+    dataLabels: { enabled: true, style: { colors: ['#fff'] } }
+    };
+    new ApexCharts(document.querySelector("#heatmapChart"), heatOptions).render();
+    }
+
+    // PDF TETIKLEYICI
+    async function downloadPDF() {
+    if (!state.latestCities || state.latestCities.length === 0) {
+    alert("İndirilecek analiz verisi bulunamadı. Lütfen önce anketi tamamlayın.");
+    return;
+    }
+
+    const btn = document.getElementById('btnDownloadPdf');
+    const originalText = btn.innerHTML;
+    btn.innerHTML = `<div class="spinner-border spinner-border-sm text-light me-2" role="status"></div> PDF Hazırlanıyor...`;
+    btn.disabled = true;
+
+    try {
+    const response = await fetch('/Anket?handler=ExportPdf', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(state.latestCities)
+    });
+
+    if (response.ok) {
+    const blob = await response.blob();
+    const url = window.URL.createObjectURL(blob);
+
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `OptiErasmus_Yol_Haritasi_${new Date().getFullYear()}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+
+    document.body.removeChild(a);
+    window.URL.revokeObjectURL(url);
+    } else {
+    alert("PDF üretilirken sunucu tarafında bir hata oluştu.");
+    }
+    } catch (error) {
+    console.error("PDF Download Error:", error);
+    alert("Bağlantı hatası nedeniyle PDF indirilemedi.");
+    } finally {
+    btn.innerHTML = originalText;
+    btn.disabled = false;
+    }
+    }
+
+    document.addEventListener("DOMContentLoaded", init);
+</script>

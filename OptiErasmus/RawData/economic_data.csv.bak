@@ -1,0 +1,431 @@
+﻿City,Criteria,Price,Currency,PriceEUR
+Warsaw,Meal at an Inexpensive Restaurant,42.5,PLN,9.78
+Warsaw,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",210.0,PLN,48.3
+Warsaw,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),35.0,PLN,8.05
+Warsaw,Domestic Draft Beer (0.5 Liter),18.5,PLN,4.25
+Warsaw,Imported Beer (0.33 Liter Bottle),18.0,PLN,4.14
+Warsaw,Cappuccino (Regular Size),16.59,PLN,3.82
+Warsaw,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",9.23,PLN,2.12
+Warsaw,Bottled Water (0.33 Liter),8.75,PLN,2.01
+Warsaw,"Milk (Regular, 1 Liter)",4.16,PLN,0.96
+Warsaw,Fresh White Bread (500 g Loaf),5.59,PLN,1.29
+Warsaw,White Rice (1 kg),7.15,PLN,1.64
+Warsaw,"Eggs (12, Large Size)",14.85,PLN,3.42
+Warsaw,Local Cheese (1 kg),39.17,PLN,9.01
+Warsaw,Chicken Fillets (1 kg),27.3,PLN,6.28
+Warsaw,Beef Round or Equivalent Back Leg Red Meat (1 kg),58.75,PLN,13.51
+Warsaw,Apples (1 kg),5.22,PLN,1.2
+Warsaw,Bananas (1 kg),6.8,PLN,1.56
+Warsaw,Oranges (1 kg),7.95,PLN,1.83
+Warsaw,Tomatoes (1 kg),11.98,PLN,2.76
+Warsaw,Potatoes (1 kg),3.76,PLN,0.86
+Warsaw,Onions (1 kg),4.02,PLN,0.92
+Warsaw,Lettuce (1 Head),5.88,PLN,1.35
+Warsaw,Bottled Water (1.5 Liter),2.67,PLN,0.61
+Warsaw,Bottle of Wine (Mid-Range),30.0,PLN,6.9
+Warsaw,Domestic Beer (0.5 Liter Bottle),4.75,PLN,1.09
+Warsaw,"Cigarettes (Pack of 20, Marlboro)",23.49,PLN,5.4
+Warsaw,One-Way Ticket (Local Transport),4.4,PLN,1.01
+Warsaw,Monthly Public Transport Pass (Regular Price),110.0,PLN,25.3
+Warsaw,Taxi Start (Standard Tariff),10.0,PLN,2.3
+Warsaw,Taxi 1 km (Standard Tariff),5.0,PLN,1.15
+Warsaw,Taxi 1 Hour Waiting (Standard Tariff),50.0,PLN,11.5
+Warsaw,Gasoline (1 Liter),6.18,PLN,1.42
+Warsaw,Volkswagen Golf 1.5 (or Equivalent New Compact Car),119895.0,PLN,27575.85
+Warsaw,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),120386.67,PLN,27688.93
+Warsaw,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",1251.79,PLN,287.91
+Warsaw,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",35.56,PLN,8.18
+Warsaw,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",67.33,PLN,15.49
+Warsaw,Monthly Fitness Club Membership,183.81,PLN,42.28
+Warsaw,"Tennis Court Rental (1 Hour, Weekend)",103.64,PLN,23.84
+Warsaw,Cinema Ticket (International Release),35.0,PLN,8.05
+Warsaw,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",2206.06,PLN,507.39
+Warsaw,"International Primary School, Annual Tuition per Child",57111.04,PLN,13135.54
+Warsaw,Jeans (Levi's 501 or Similar),396.62,PLN,91.22
+Warsaw,Summer Dress in a Chain Store (e.g. Zara or H&M),171.12,PLN,39.36
+Warsaw,Nike Running Shoes (Mid-Range),394.77,PLN,90.8
+Warsaw,Men's Leather Business Shoes,432.88,PLN,99.56
+Warsaw,1 Bedroom Apartment in City Centre,4421.74,PLN,1017.0
+Warsaw,1 Bedroom Apartment Outside of City Centre,3484.0,PLN,801.32
+Warsaw,3 Bedroom Apartment in City Centre,7660.0,PLN,1761.8
+Warsaw,3 Bedroom Apartment Outside of City Centre,5457.14,PLN,1255.14
+Warsaw,Price per Square Meter to Buy Apartment in City Centre,22818.57,PLN,5248.27
+Warsaw,Price per Square Meter to Buy Apartment Outside of Centre,14486.06,PLN,3331.79
+Warsaw,Average Monthly Net Salary (After Tax),8233.46,PLN,1893.7
+Warsaw,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",7.04,EUR,7.04
+Lisbon,Meal at an Inexpensive Restaurant,13.0,EUR,13.0
+Lisbon,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",50.0,EUR,50.0
+Lisbon,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),10.0,EUR,10.0
+Lisbon,Domestic Draft Beer (0.5 Liter),3.0,EUR,3.0
+Lisbon,Imported Beer (0.33 Liter Bottle),3.0,EUR,3.0
+Lisbon,Cappuccino (Regular Size),2.34,EUR,2.34
+Lisbon,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",2.18,EUR,2.18
+Lisbon,Bottled Water (0.33 Liter),1.38,EUR,1.38
+Lisbon,"Milk (Regular, 1 Liter)",1.06,EUR,1.06
+Lisbon,Fresh White Bread (500 g Loaf),1.55,EUR,1.55
+Lisbon,White Rice (1 kg),1.44,EUR,1.44
+Lisbon,"Eggs (12, Large Size)",3.51,EUR,3.51
+Lisbon,Local Cheese (1 kg),10.85,EUR,10.85
+Lisbon,Chicken Fillets (1 kg),6.96,EUR,6.96
+Lisbon,Beef Round or Equivalent Back Leg Red Meat (1 kg),14.13,EUR,14.13
+Lisbon,Apples (1 kg),1.92,EUR,1.92
+Lisbon,Bananas (1 kg),1.51,EUR,1.51
+Lisbon,Oranges (1 kg),1.74,EUR,1.74
+Lisbon,Tomatoes (1 kg),2.11,EUR,2.11
+Lisbon,Potatoes (1 kg),1.55,EUR,1.55
+Lisbon,Onions (1 kg),1.67,EUR,1.67
+Lisbon,Lettuce (1 Head),1.49,EUR,1.49
+Lisbon,Bottled Water (1.5 Liter),0.75,EUR,0.75
+Lisbon,Bottle of Wine (Mid-Range),5.0,EUR,5.0
+Lisbon,Domestic Beer (0.5 Liter Bottle),1.12,EUR,1.12
+Lisbon,"Cigarettes (Pack of 20, Marlboro)",5.8,EUR,5.8
+Lisbon,One-Way Ticket (Local Transport),2.0,EUR,2.0
+Lisbon,Monthly Public Transport Pass (Regular Price),40.0,EUR,40.0
+Lisbon,Taxi Start (Standard Tariff),3.5,EUR,3.5
+Lisbon,Taxi 1 km (Standard Tariff),0.98,EUR,0.98
+Lisbon,Taxi 1 Hour Waiting (Standard Tariff),14.8,EUR,14.8
+Lisbon,Gasoline (1 Liter),1.8,EUR,1.8
+Lisbon,Volkswagen Golf 1.5 (or Equivalent New Compact Car),30402.0,EUR,30402.0
+Lisbon,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),34887.1,EUR,34887.1
+Lisbon,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",153.69,EUR,153.69
+Lisbon,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",17.17,EUR,17.17
+Lisbon,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",31.21,EUR,31.21
+Lisbon,Monthly Fitness Club Membership,42.12,EUR,42.12
+Lisbon,"Tennis Court Rental (1 Hour, Weekend)",17.25,EUR,17.25
+Lisbon,Cinema Ticket (International Release),8.0,EUR,8.0
+Lisbon,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",528.69,EUR,528.69
+Lisbon,"International Primary School, Annual Tuition per Child",14444.3,EUR,14444.3
+Lisbon,Jeans (Levi's 501 or Similar),95.59,EUR,95.59
+Lisbon,Summer Dress in a Chain Store (e.g. Zara or H&M),43.12,EUR,43.12
+Lisbon,Nike Running Shoes (Mid-Range),97.06,EUR,97.06
+Lisbon,Men's Leather Business Shoes,115.47,EUR,115.47
+Lisbon,1 Bedroom Apartment in City Centre,1361.67,EUR,1361.67
+Lisbon,1 Bedroom Apartment Outside of City Centre,1050.0,EUR,1050.0
+Lisbon,3 Bedroom Apartment in City Centre,2623.08,EUR,2623.08
+Lisbon,3 Bedroom Apartment Outside of City Centre,1700.0,EUR,1700.0
+Lisbon,Price per Square Meter to Buy Apartment in City Centre,6681.62,EUR,6681.62
+Lisbon,Price per Square Meter to Buy Apartment Outside of Centre,3641.24,EUR,3641.24
+Lisbon,Average Monthly Net Salary (After Tax),1343.03,EUR,1343.03
+Lisbon,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",3.53,EUR,3.53
+Sofia,Meal at an Inexpensive Restaurant,11.13,EUR,11.13
+Sofia,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",50.0,EUR,50.0
+Sofia,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),9.61,EUR,9.61
+Sofia,Domestic Draft Beer (0.5 Liter),2.81,EUR,2.81
+Sofia,Imported Beer (0.33 Liter Bottle),3.07,EUR,3.07
+Sofia,Cappuccino (Regular Size),2.65,EUR,2.65
+Sofia,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",1.95,EUR,1.95
+Sofia,Bottled Water (0.33 Liter),1.4,EUR,1.4
+Sofia,"Milk (Regular, 1 Liter)",1.69,EUR,1.69
+Sofia,Fresh White Bread (500 g Loaf),1.23,EUR,1.23
+Sofia,White Rice (1 kg),1.96,EUR,1.96
+Sofia,"Eggs (12, Large Size)",3.38,EUR,3.38
+Sofia,Local Cheese (1 kg),10.6,EUR,10.6
+Sofia,Chicken Fillets (1 kg),7.49,EUR,7.49
+Sofia,Beef Round or Equivalent Back Leg Red Meat (1 kg),13.0,EUR,13.0
+Sofia,Apples (1 kg),1.74,EUR,1.74
+Sofia,Bananas (1 kg),1.75,EUR,1.75
+Sofia,Oranges (1 kg),1.6,EUR,1.6
+Sofia,Tomatoes (1 kg),2.72,EUR,2.72
+Sofia,Potatoes (1 kg),0.92,EUR,0.92
+Sofia,Onions (1 kg),0.81,EUR,0.81
+Sofia,Lettuce (1 Head),0.92,EUR,0.92
+Sofia,Bottled Water (1.5 Liter),0.67,EUR,0.67
+Sofia,Bottle of Wine (Mid-Range),6.39,EUR,6.39
+Sofia,Domestic Beer (0.5 Liter Bottle),0.96,EUR,0.96
+Sofia,"Cigarettes (Pack of 20, Marlboro)",3.58,EUR,3.58
+Sofia,One-Way Ticket (Local Transport),0.82,EUR,0.82
+Sofia,Monthly Public Transport Pass (Regular Price),25.54,EUR,25.54
+Sofia,Taxi Start (Standard Tariff),1.53,EUR,1.53
+Sofia,Taxi 1 km (Standard Tariff),0.86,EUR,0.86
+Sofia,Taxi 1 Hour Waiting (Standard Tariff),12.27,EUR,12.27
+Sofia,Gasoline (1 Liter),1.31,EUR,1.31
+Sofia,Volkswagen Golf 1.5 (or Equivalent New Compact Car),26850.86,EUR,26850.86
+Sofia,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),24689.72,EUR,24689.72
+Sofia,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",138.34,EUR,138.34
+Sofia,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",16.35,EUR,16.35
+Sofia,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",12.22,EUR,12.22
+Sofia,Monthly Fitness Club Membership,38.88,EUR,38.88
+Sofia,"Tennis Court Rental (1 Hour, Weekend)",21.81,EUR,21.81
+Sofia,Cinema Ticket (International Release),9.0,EUR,9.0
+Sofia,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",598.14,EUR,598.14
+Sofia,"International Primary School, Annual Tuition per Child",10271.61,EUR,10271.61
+Sofia,Jeans (Levi's 501 or Similar),74.74,EUR,74.74
+Sofia,Summer Dress in a Chain Store (e.g. Zara or H&M),35.33,EUR,35.33
+Sofia,Nike Running Shoes (Mid-Range),93.84,EUR,93.84
+Sofia,Men's Leather Business Shoes,99.57,EUR,99.57
+Sofia,1 Bedroom Apartment in City Centre,669.31,EUR,669.31
+Sofia,1 Bedroom Apartment Outside of City Centre,517.63,EUR,517.63
+Sofia,3 Bedroom Apartment in City Centre,1225.88,EUR,1225.88
+Sofia,3 Bedroom Apartment Outside of City Centre,852.88,EUR,852.88
+Sofia,Price per Square Meter to Buy Apartment in City Centre,3742.95,EUR,3742.95
+Sofia,Price per Square Meter to Buy Apartment Outside of Centre,2578.71,EUR,2578.71
+Sofia,Average Monthly Net Salary (After Tax),1436.6,EUR,1436.6
+Sofia,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",2.95,EUR,2.95
+Skopje,Meal at an Inexpensive Restaurant,400.0,MKD,6.48
+Skopje,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",1800.0,MKD,29.16
+Skopje,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),350.0,MKD,5.67
+Skopje,Domestic Draft Beer (0.5 Liter),150.0,MKD,2.43
+Skopje,Imported Beer (0.33 Liter Bottle),180.0,MKD,2.92
+Skopje,Cappuccino (Regular Size),117.82,MKD,1.91
+Skopje,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",104.89,MKD,1.7
+Skopje,Bottled Water (0.33 Liter),70.07,MKD,1.14
+Skopje,"Milk (Regular, 1 Liter)",70.12,MKD,1.14
+Skopje,Fresh White Bread (500 g Loaf),42.6,MKD,0.69
+Skopje,White Rice (1 kg),96.72,MKD,1.57
+Skopje,"Eggs (12, Large Size)",122.57,MKD,1.99
+Skopje,Local Cheese (1 kg),483.64,MKD,7.83
+Skopje,Chicken Fillets (1 kg),411.05,MKD,6.66
+Skopje,Beef Round or Equivalent Back Leg Red Meat (1 kg),749.07,MKD,12.13
+Skopje,Apples (1 kg),62.37,MKD,1.01
+Skopje,Bananas (1 kg),74.95,MKD,1.21
+Skopje,Oranges (1 kg),77.68,MKD,1.26
+Skopje,Tomatoes (1 kg),117.45,MKD,1.9
+Skopje,Potatoes (1 kg),45.77,MKD,0.74
+Skopje,Onions (1 kg),48.4,MKD,0.78
+Skopje,Lettuce (1 Head),37.5,MKD,0.61
+Skopje,Bottled Water (1.5 Liter),31.96,MKD,0.52
+Skopje,Bottle of Wine (Mid-Range),400.0,MKD,6.48
+Skopje,Domestic Beer (0.5 Liter Bottle),59.39,MKD,0.96
+Skopje,"Cigarettes (Pack of 20, Marlboro)",180.0,MKD,2.92
+Skopje,One-Way Ticket (Local Transport),40.0,MKD,0.65
+Skopje,Monthly Public Transport Pass (Regular Price),1500.0,MKD,24.3
+Skopje,Taxi Start (Standard Tariff),60.0,MKD,0.97
+Skopje,Taxi 1 km (Standard Tariff),35.0,MKD,0.57
+Skopje,Taxi 1 Hour Waiting (Standard Tariff),500.0,MKD,8.1
+Skopje,Gasoline (1 Liter),78.17,MKD,1.27
+Skopje,Volkswagen Golf 1.5 (or Equivalent New Compact Car),1800000.0,MKD,29160.0
+Skopje,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),1519309.09,MKD,24612.81
+Skopje,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",8533.48,MKD,138.24
+Skopje,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",984.95,MKD,15.96
+Skopje,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",989.6,MKD,16.03
+Skopje,Monthly Fitness Club Membership,2001.87,MKD,32.43
+Skopje,"Tennis Court Rental (1 Hour, Weekend)",925.0,MKD,14.98
+Skopje,Cinema Ticket (International Release),350.0,MKD,5.67
+Skopje,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",18732.84,MKD,303.47
+Skopje,"International Primary School, Annual Tuition per Child",281295.52,MKD,4556.99
+Skopje,Jeans (Levi's 501 or Similar),4690.0,MKD,75.98
+Skopje,Summer Dress in a Chain Store (e.g. Zara or H&M),2130.62,MKD,34.52
+Skopje,Nike Running Shoes (Mid-Range),5423.67,MKD,87.86
+Skopje,Men's Leather Business Shoes,6212.32,MKD,100.64
+Skopje,1 Bedroom Apartment in City Centre,22935.16,MKD,371.55
+Skopje,1 Bedroom Apartment Outside of City Centre,16979.99,MKD,275.08
+Skopje,3 Bedroom Apartment in City Centre,36829.15,MKD,596.63
+Skopje,3 Bedroom Apartment Outside of City Centre,26056.89,MKD,422.12
+Skopje,Price per Square Meter to Buy Apartment in City Centre,147744.61,MKD,2393.46
+Skopje,Price per Square Meter to Buy Apartment Outside of Centre,97448.79,MKD,1578.67
+Skopje,Average Monthly Net Salary (After Tax),45955.57,MKD,744.48
+Skopje,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",4.29,EUR,4.29
+Vilnius,Meal at an Inexpensive Restaurant,12.0,EUR,12.0
+Vilnius,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",65.0,EUR,65.0
+Vilnius,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),7.0,EUR,7.0
+Vilnius,Domestic Draft Beer (0.5 Liter),5.0,EUR,5.0
+Vilnius,Imported Beer (0.33 Liter Bottle),5.0,EUR,5.0
+Vilnius,Cappuccino (Regular Size),3.19,EUR,3.19
+Vilnius,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",1.69,EUR,1.69
+Vilnius,Bottled Water (0.33 Liter),2.19,EUR,2.19
+Vilnius,"Milk (Regular, 1 Liter)",1.3,EUR,1.3
+Vilnius,Fresh White Bread (500 g Loaf),1.35,EUR,1.35
+Vilnius,White Rice (1 kg),2.23,EUR,2.23
+Vilnius,"Eggs (12, Large Size)",2.69,EUR,2.69
+Vilnius,Local Cheese (1 kg),9.85,EUR,9.85
+Vilnius,Chicken Fillets (1 kg),6.45,EUR,6.45
+Vilnius,Beef Round or Equivalent Back Leg Red Meat (1 kg),10.54,EUR,10.54
+Vilnius,Apples (1 kg),1.45,EUR,1.45
+Vilnius,Bananas (1 kg),1.36,EUR,1.36
+Vilnius,Oranges (1 kg),1.76,EUR,1.76
+Vilnius,Tomatoes (1 kg),2.74,EUR,2.74
+Vilnius,Potatoes (1 kg),0.76,EUR,0.76
+Vilnius,Onions (1 kg),0.79,EUR,0.79
+Vilnius,Lettuce (1 Head),1.49,EUR,1.49
+Vilnius,Bottled Water (1.5 Liter),0.78,EUR,0.78
+Vilnius,Bottle of Wine (Mid-Range),8.0,EUR,8.0
+Vilnius,Domestic Beer (0.5 Liter Bottle),1.45,EUR,1.45
+Vilnius,"Cigarettes (Pack of 20, Marlboro)",5.45,EUR,5.45
+Vilnius,One-Way Ticket (Local Transport),1.0,EUR,1.0
+Vilnius,Monthly Public Transport Pass (Regular Price),38.0,EUR,38.0
+Vilnius,Taxi Start (Standard Tariff),2.75,EUR,2.75
+Vilnius,Taxi 1 km (Standard Tariff),1.1,EUR,1.1
+Vilnius,Taxi 1 Hour Waiting (Standard Tariff),12.6,EUR,12.6
+Vilnius,Gasoline (1 Liter),1.45,EUR,1.45
+Vilnius,Volkswagen Golf 1.5 (or Equivalent New Compact Car),24388.0,EUR,24388.0
+Vilnius,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),27900.0,EUR,27900.0
+Vilnius,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",210.13,EUR,210.13
+Vilnius,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",12.5,EUR,12.5
+Vilnius,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",16.37,EUR,16.37
+Vilnius,Monthly Fitness Club Membership,38.12,EUR,38.12
+Vilnius,"Tennis Court Rental (1 Hour, Weekend)",31.23,EUR,31.23
+Vilnius,Cinema Ticket (International Release),8.5,EUR,8.5
+Vilnius,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",544.73,EUR,544.73
+Vilnius,"International Primary School, Annual Tuition per Child",10416.83,EUR,10416.83
+Vilnius,Jeans (Levi's 501 or Similar),71.67,EUR,71.67
+Vilnius,Summer Dress in a Chain Store (e.g. Zara or H&M),37.42,EUR,37.42
+Vilnius,Nike Running Shoes (Mid-Range),90.12,EUR,90.12
+Vilnius,Men's Leather Business Shoes,113.88,EUR,113.88
+Vilnius,1 Bedroom Apartment in City Centre,729.59,EUR,729.59
+Vilnius,1 Bedroom Apartment Outside of City Centre,556.06,EUR,556.06
+Vilnius,3 Bedroom Apartment in City Centre,1275.47,EUR,1275.47
+Vilnius,3 Bedroom Apartment Outside of City Centre,867.99,EUR,867.99
+Vilnius,Price per Square Meter to Buy Apartment in City Centre,5342.67,EUR,5342.67
+Vilnius,Price per Square Meter to Buy Apartment Outside of Centre,2966.67,EUR,2966.67
+Vilnius,Average Monthly Net Salary (After Tax),1658.64,EUR,1658.64
+Vilnius,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",4.21,EUR,4.21
+Belgrade,Meal at an Inexpensive Restaurant,1300.0,RSD,11.05
+Belgrade,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",6000.0,RSD,51.0
+Belgrade,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),1200.0,RSD,10.2
+Belgrade,Domestic Draft Beer (0.5 Liter),350.0,RSD,2.98
+Belgrade,Imported Beer (0.33 Liter Bottle),400.0,RSD,3.4
+Belgrade,Cappuccino (Regular Size),300.77,RSD,2.56
+Belgrade,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",294.8,RSD,2.51
+Belgrade,Bottled Water (0.33 Liter),233.68,RSD,1.99
+Belgrade,"Milk (Regular, 1 Liter)",144.69,RSD,1.23
+Belgrade,Fresh White Bread (500 g Loaf),105.68,RSD,0.9
+Belgrade,White Rice (1 kg),291.42,RSD,2.48
+Belgrade,"Eggs (12, Large Size)",273.3,RSD,2.32
+Belgrade,Local Cheese (1 kg),1057.56,RSD,8.99
+Belgrade,Chicken Fillets (1 kg),746.85,RSD,6.35
+Belgrade,Beef Round or Equivalent Back Leg Red Meat (1 kg),1503.67,RSD,12.78
+Belgrade,Apples (1 kg),169.19,RSD,1.44
+Belgrade,Bananas (1 kg),206.25,RSD,1.75
+Belgrade,Oranges (1 kg),205.11,RSD,1.74
+Belgrade,Tomatoes (1 kg),228.41,RSD,1.94
+Belgrade,Potatoes (1 kg),101.85,RSD,0.87
+Belgrade,Onions (1 kg),80.17,RSD,0.68
+Belgrade,Lettuce (1 Head),87.05,RSD,0.74
+Belgrade,Bottled Water (1.5 Liter),71.84,RSD,0.61
+Belgrade,Bottle of Wine (Mid-Range),800.0,RSD,6.8
+Belgrade,Domestic Beer (0.5 Liter Bottle),91.54,RSD,0.78
+Belgrade,"Cigarettes (Pack of 20, Marlboro)",480.0,RSD,4.08
+Belgrade,Taxi Start (Standard Tariff),320.0,RSD,2.72
+Belgrade,Taxi 1 km (Standard Tariff),105.0,RSD,0.89
+Belgrade,Taxi 1 Hour Waiting (Standard Tariff),1800.0,RSD,15.3
+Belgrade,Gasoline (1 Liter),187.81,RSD,1.6
+Belgrade,Volkswagen Golf 1.5 (or Equivalent New Compact Car),3200434.26,RSD,27203.69
+Belgrade,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),2635057.32,RSD,22397.99
+Belgrade,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",23525.25,RSD,199.96
+Belgrade,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",2231.93,RSD,18.97
+Belgrade,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",3980.4,RSD,33.83
+Belgrade,Monthly Fitness Club Membership,4300.48,RSD,36.55
+Belgrade,"Tennis Court Rental (1 Hour, Weekend)",2645.0,RSD,22.48
+Belgrade,Cinema Ticket (International Release),822.01,RSD,6.99
+Belgrade,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",45653.18,RSD,388.05
+Belgrade,"International Primary School, Annual Tuition per Child",1013911.62,RSD,8618.25
+Belgrade,Jeans (Levi's 501 or Similar),11968.59,RSD,101.73
+Belgrade,Summer Dress in a Chain Store (e.g. Zara or H&M),4694.54,RSD,39.9
+Belgrade,Nike Running Shoes (Mid-Range),11595.58,RSD,98.56
+Belgrade,Men's Leather Business Shoes,15043.71,RSD,127.87
+Belgrade,1 Bedroom Apartment in City Centre,89895.57,RSD,764.11
+Belgrade,1 Bedroom Apartment Outside of City Centre,61060.58,RSD,519.01
+Belgrade,3 Bedroom Apartment in City Centre,168888.88,RSD,1435.56
+Belgrade,3 Bedroom Apartment Outside of City Centre,111389.99,RSD,946.81
+Belgrade,Price per Square Meter to Buy Apartment in City Centre,521780.32,RSD,4435.13
+Belgrade,Price per Square Meter to Buy Apartment Outside of Centre,309355.81,RSD,2629.52
+Belgrade,Average Monthly Net Salary (After Tax),126886.24,RSD,1078.53
+Belgrade,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",4.84,EUR,4.84
+Porto,Meal at an Inexpensive Restaurant,11.5,EUR,11.5
+Porto,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",50.0,EUR,50.0
+Porto,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),8.0,EUR,8.0
+Porto,Domestic Draft Beer (0.5 Liter),3.0,EUR,3.0
+Porto,Imported Beer (0.33 Liter Bottle),4.0,EUR,4.0
+Porto,Cappuccino (Regular Size),2.13,EUR,2.13
+Porto,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",2.12,EUR,2.12
+Porto,Bottled Water (0.33 Liter),1.21,EUR,1.21
+Porto,"Milk (Regular, 1 Liter)",0.97,EUR,0.97
+Porto,Fresh White Bread (500 g Loaf),1.37,EUR,1.37
+Porto,White Rice (1 kg),1.38,EUR,1.38
+Porto,"Eggs (12, Large Size)",3.07,EUR,3.07
+Porto,Local Cheese (1 kg),11.2,EUR,11.2
+Porto,Chicken Fillets (1 kg),6.29,EUR,6.29
+Porto,Beef Round or Equivalent Back Leg Red Meat (1 kg),13.76,EUR,13.76
+Porto,Apples (1 kg),1.93,EUR,1.93
+Porto,Bananas (1 kg),1.26,EUR,1.26
+Porto,Oranges (1 kg),1.54,EUR,1.54
+Porto,Tomatoes (1 kg),2.21,EUR,2.21
+Porto,Potatoes (1 kg),1.46,EUR,1.46
+Porto,Onions (1 kg),1.63,EUR,1.63
+Porto,Lettuce (1 Head),1.52,EUR,1.52
+Porto,Bottled Water (1.5 Liter),0.67,EUR,0.67
+Porto,Bottle of Wine (Mid-Range),5.0,EUR,5.0
+Porto,Domestic Beer (0.5 Liter Bottle),1.11,EUR,1.11
+Porto,"Cigarettes (Pack of 20, Marlboro)",5.75,EUR,5.75
+Porto,One-Way Ticket (Local Transport),1.55,EUR,1.55
+Porto,Monthly Public Transport Pass (Regular Price),40.0,EUR,40.0
+Porto,Taxi Start (Standard Tariff),3.5,EUR,3.5
+Porto,Taxi 1 km (Standard Tariff),0.75,EUR,0.75
+Porto,Taxi 1 Hour Waiting (Standard Tariff),15.0,EUR,15.0
+Porto,Gasoline (1 Liter),1.73,EUR,1.73
+Porto,Volkswagen Golf 1.5 (or Equivalent New Compact Car),30043.0,EUR,30043.0
+Porto,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),31700.0,EUR,31700.0
+Porto,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",120.81,EUR,120.81
+Porto,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",12.93,EUR,12.93
+Porto,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",33.06,EUR,33.06
+Porto,Monthly Fitness Club Membership,41.08,EUR,41.08
+Porto,"Tennis Court Rental (1 Hour, Weekend)",13.88,EUR,13.88
+Porto,Cinema Ticket (International Release),8.0,EUR,8.0
+Porto,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",502.15,EUR,502.15
+Porto,"International Primary School, Annual Tuition per Child",9365.0,EUR,9365.0
+Porto,Jeans (Levi's 501 or Similar),94.95,EUR,94.95
+Porto,Summer Dress in a Chain Store (e.g. Zara or H&M),31.32,EUR,31.32
+Porto,Nike Running Shoes (Mid-Range),80.68,EUR,80.68
+Porto,Men's Leather Business Shoes,93.0,EUR,93.0
+Porto,1 Bedroom Apartment in City Centre,1099.38,EUR,1099.38
+Porto,1 Bedroom Apartment Outside of City Centre,810.0,EUR,810.0
+Porto,3 Bedroom Apartment in City Centre,1904.71,EUR,1904.71
+Porto,3 Bedroom Apartment Outside of City Centre,1410.0,EUR,1410.0
+Porto,Price per Square Meter to Buy Apartment in City Centre,4598.82,EUR,4598.82
+Porto,Price per Square Meter to Buy Apartment Outside of Centre,3400.84,EUR,3400.84
+Porto,Average Monthly Net Salary (After Tax),1313.51,EUR,1313.51
+Porto,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",3.67,EUR,3.67
+Lomza,Meal at an Inexpensive Restaurant,36.12,PLN,8.31
+Lomza,"Meal for Two at a Mid-Range Restaurant (Three Courses, Without Drinks)",178.5,PLN,41.06
+Lomza,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),29.75,PLN,6.84
+Lomza,Domestic Draft Beer (0.5 Liter),15.72,PLN,3.61
+Lomza,Imported Beer (0.33 Liter Bottle),15.3,PLN,3.52
+Lomza,Cappuccino (Regular Size),14.1,PLN,3.25
+Lomza,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",7.85,PLN,1.8
+Lomza,Bottled Water (0.33 Liter),7.44,PLN,1.71
+Lomza,"Milk (Regular, 1 Liter)",3.54,PLN,0.82
+Lomza,Fresh White Bread (500 g Loaf),4.75,PLN,1.1
+Lomza,White Rice (1 kg),6.08,PLN,1.39
+Lomza,"Eggs (12, Large Size)",12.62,PLN,2.91
+Lomza,Local Cheese (1 kg),33.29,PLN,7.66
+Lomza,Chicken Fillets (1 kg),23.2,PLN,5.34
+Lomza,Beef Round or Equivalent Back Leg Red Meat (1 kg),49.94,PLN,11.48
+Lomza,Apples (1 kg),4.44,PLN,1.02
+Lomza,Bananas (1 kg),5.78,PLN,1.33
+Lomza,Oranges (1 kg),6.76,PLN,1.56
+Lomza,Tomatoes (1 kg),10.18,PLN,2.35
+Lomza,Potatoes (1 kg),3.2,PLN,0.73
+Lomza,Onions (1 kg),3.42,PLN,0.78
+Lomza,Lettuce (1 Head),5.0,PLN,1.15
+Lomza,Bottled Water (1.5 Liter),2.27,PLN,0.52
+Lomza,Bottle of Wine (Mid-Range),25.5,PLN,5.86
+Lomza,Domestic Beer (0.5 Liter Bottle),4.04,PLN,0.93
+Lomza,"Cigarettes (Pack of 20, Marlboro)",19.97,PLN,4.59
+Lomza,One-Way Ticket (Local Transport),3.74,PLN,0.86
+Lomza,Monthly Public Transport Pass (Regular Price),93.5,PLN,21.5
+Lomza,Taxi Start (Standard Tariff),8.5,PLN,1.95
+Lomza,Taxi 1 km (Standard Tariff),4.25,PLN,0.98
+Lomza,Taxi 1 Hour Waiting (Standard Tariff),42.5,PLN,9.78
+Lomza,Gasoline (1 Liter),5.25,PLN,1.21
+Lomza,Volkswagen Golf 1.5 (or Equivalent New Compact Car),101910.75,PLN,23439.47
+Lomza,Toyota Corolla Sedan 1.6 (or Equivalent New Mid-Size Car),102328.67,PLN,23535.59
+Lomza,"Basic Utilities for 85 m2 Apartment (Electricity, Heating, Cooling, Water, Garbage)",901.29,PLN,207.3
+Lomza,"Mobile Phone Plan (Monthly, with Calls and 10GB+ Data)",30.23,PLN,6.95
+Lomza,"Broadband Internet (Unlimited Data, 60 Mbps or Higher)",57.23,PLN,13.17
+Lomza,Monthly Fitness Club Membership,156.24,PLN,35.94
+Lomza,"Tennis Court Rental (1 Hour, Weekend)",88.09,PLN,20.26
+Lomza,Cinema Ticket (International Release),29.75,PLN,6.84
+Lomza,"Private Full-Day Preschool or Kindergarten, Monthly Fee per Child",1875.15,PLN,431.28
+Lomza,"International Primary School, Annual Tuition per Child",48544.38,PLN,11165.21
+Lomza,Jeans (Levi's 501 or Similar),337.13,PLN,77.54
+Lomza,Summer Dress in a Chain Store (e.g. Zara or H&M),145.45,PLN,33.46
+Lomza,Nike Running Shoes (Mid-Range),335.55,PLN,77.18
+Lomza,Men's Leather Business Shoes,367.95,PLN,84.63
+Lomza,1 Bedroom Apartment in City Centre,3183.65,PLN,732.24
+Lomza,1 Bedroom Apartment Outside of City Centre,2508.48,PLN,576.95
+Lomza,3 Bedroom Apartment in City Centre,5515.2,PLN,1268.5
+Lomza,3 Bedroom Apartment Outside of City Centre,3929.14,PLN,903.7
+Lomza,Price per Square Meter to Buy Apartment in City Centre,16429.37,PLN,3778.75
+Lomza,Price per Square Meter to Buy Apartment Outside of Centre,10429.96,PLN,2398.89
+Lomza,Average Monthly Net Salary (After Tax),6998.44,PLN,1609.64
+Lomza,"Annual Mortgage Interest Rate (20-Year Fixed, in %)",5.98,EUR,5.98

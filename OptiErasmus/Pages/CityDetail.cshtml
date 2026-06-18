@@ -1,0 +1,151 @@
+@page
+@model OptiErasmus.Pages.CityDetailModel
+@using System.Text.Json
+@{
+    ViewData["Title"] = Model.City.CityName + " Detayları";
+}
+
+<div class="position-relative w-100 mb-5" style="height: 40vh; min-height: 350px; overflow: hidden; border-radius: 0 0 40px 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+    <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(0deg, rgba(24,30,75,0.9) 0%, rgba(24,30,75,0.3) 100%), url('@Model.City.ImageUrl') center/cover;"></div>
+    <div class="container h-100 position-relative z-1 d-flex flex-column justify-content-end pb-5">
+        <h1 class="display-3 fw-bold text-white mb-2" style="font-family: 'Poppins', sans-serif;">@Model.City.CityName</h1>
+        <p class="fs-4 text-white-50 mb-0"><i class="bi bi-geo-alt-fill text-danger me-2"></i>@Model.City.Country</p>
+    </div>
+</div>
+
+<div class="container mb-5 pb-5">
+
+    <div class="row g-4 mb-5">
+        <div class="col-lg-4">
+            <div class="card border-0 shadow-sm h-100 p-3" style="border-radius: 24px;">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-4" style="color: #181e4b;">Şehir Skorları</h5>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted fw-bold">Akademik Kalite</span>
+                            <span class="fw-bold text-success">@Model.City.AcademicScore.ToString("F2")</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-success" style="width: @Model.City.AcademicScore%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted fw-bold">Ekonomi (Uygunluk)</span>
+                            <span class="fw-bold text-warning">@Model.City.EconomyScore.ToString("F2")</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-warning" style="width: @Model.City.EconomyScore%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted fw-bold">Sosyal Yaşam</span>
+                            <span class="fw-bold text-info">@Model.City.SocialScore.ToString("F2")</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar bg-info" style="width: @Model.City.SocialScore%"></div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between mb-1">
+                            <span class="text-muted fw-bold">Güvenlik</span>
+                            <span class="fw-bold" style="color: #df6951;">@Model.City.SecurityScore.ToString("F2")</span>
+                        </div>
+                        <div class="progress" style="height: 8px;">
+                            <div class="progress-bar" style="background: #df6951; width: @Model.City.SecurityScore%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm h-100 p-3" style="border-radius: 24px;">
+                <div class="card-body">
+                    <h5 class="fw-bold mb-4" style="color: #181e4b;">Sosyal Medya Duygu Dağılımı</h5>
+                    <div id="citySentimentChart" style="min-height: 250px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <h3 class="fw-bold mb-4" style="color: #181e4b;">Sosyal Medya Yorumları (Otomatik Türkçe Çeviri)</h3>
+    <div class="row g-4">
+        <div class="col-md-6">
+            <h5 class="fw-bold mb-3 text-success"><i class="bi bi-emoji-smile me-2"></i>Öne Çıkan Olumlu Yorumlar</h5>
+            @if (!Model.PositiveComments.Any())
+            {
+                <p class="text-muted small bg-light p-3 rounded-3">Bu şehir için yeterli olumlu yorum verisi bulunamadı.</p>
+            }
+            else
+            {
+                foreach (var c in Model.PositiveComments)
+                {
+                    <div class="card border-0 shadow-sm mb-3" style="border-radius: 16px; border-left: 4px solid #2B9348 !important;">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-light text-danger border"><i class="bi bi-youtube me-1"></i>YouTube</span>
+                                <small class="text-success fw-bold">Olumlu</small>
+                            </div>
+                            <p class="mb-0 text-dark" style="font-size: 0.95rem; line-height: 1.5;">"{@c.Comment}"</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+
+        <div class="col-md-6">
+            <h5 class="fw-bold mb-3 text-danger"><i class="bi bi-emoji-frown me-2"></i>Öne Çıkan Olumsuz/Nötr Yorumlar</h5>
+            @if (!Model.NegativeComments.Any())
+            {
+                <p class="text-muted small bg-light p-3 rounded-3">Bu şehir için yeterli olumsuz yorum verisi bulunamadı.</p>
+            }
+            else
+            {
+                foreach (var c in Model.NegativeComments)
+                {
+                    <div class="card border-0 shadow-sm mb-3" style="border-radius: 16px; border-left: 4px solid #df6951 !important;">
+                        <div class="card-body p-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="badge bg-light text-danger border"><i class="bi bi-youtube me-1"></i>YouTube</span>
+                                <small class="text-danger fw-bold">@c.Sentiment</small>
+                            </div>
+                            <p class="mb-0 text-dark" style="font-size: 0.95rem; line-height: 1.5;">"{@c.Comment}"</p>
+                        </div>
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+    var sentimentData = @Html.Raw(JsonSerializer.Serialize(Model.CitySentiment));
+
+    var olumlu = sentimentData.find(d => d.Sentiment === 'Olumlu')?.Count || 0;
+    var notr = sentimentData.find(d => d.Sentiment === 'Nötr')?.Count || 0;
+    var olumsuz = sentimentData.find(d => d.Sentiment === 'Olumsuz')?.Count || 0;
+
+    if (olumlu === 0 && notr === 0 && olumsuz === 0) {
+    document.querySelector("#citySentimentChart").innerHTML = "<p class='text-muted text-center mt-5'>Duygu analizi için yeterli veri bulunamadı.</p>";
+    return;
+    }
+
+    var options = {
+    series: [olumlu, notr, olumsuz],
+    chart: { type: 'donut', height: 280, fontFamily: 'Poppins, sans-serif' },
+    labels: ['Olumlu', 'Nötr', 'Olumsuz'],
+    colors: ['#2B9348', '#F1A501', '#DF6951'],
+    plotOptions: { donut: { size: '70%' } },
+    legend: { position: 'bottom' }
+    };
+    new ApexCharts(document.querySelector("#citySentimentChart"), options).render();
+    });
+</script>

@@ -1,0 +1,99 @@
+@page "/rehber"
+@model OptiErasmus.Pages.RehberModel
+@{
+    ViewData["Title"] = "Şehir ve Üniversite Rehberi";
+}
+
+<div class="text-center mb-5 pt-3">
+    <h2 class="display-5 fw-bold mb-5 pb-3">Şehir ve Üniversite Rehberi</h2>
+</div>
+
+<div class="container mb-5 pb-5">
+    <div class="row g-5">
+        @foreach (var city in Model.Cities)
+        {
+            <div class="col-lg-4 col-md-6">
+                <!-- Using aesthetic card sizing mimicking the Jadoo destinations -->
+                <a href="/CityDetail?cityName=@city.CityName" style="text-decoration: none; color: inherit; display: block;" class="h-100">
+                    <div class="card border-0 h-100 destination-card bg-white position-relative">
+                        <div style="height: 280px; overflow: hidden;" class="rounded-top-5">
+                            <!-- Abstract placeholder images since we don't have real city photos -->
+                            <div style="width:100%; height:100%; background: linear-gradient(0deg, rgba(24,30,75,0.8) 0%, rgba(24,30,75,0) 70%), url('@city.ImageUrl') center/cover; position: relative;">
+                                <div class="position-absolute bottom-0 start-0 p-4 w-100">
+                                    <h3 class="fw-bold text-white mb-0" style="text-shadow: 0 2px 4px rgba(0,0,0,0.3);">@city.CityName <span class="fs-5 fw-normal text-white-50">(@city.Country)</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body p-4 pt-4 shadow-sm" style="border-radius: 0 0 24px 24px;">
+
+                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                <span class="text-muted d-flex align-items-center gap-2 font-monospace" style="font-size: 0.9rem;">
+                                    <i class="bi bi-geo-alt-fill" style="color: var(--accent-coral);"></i> Avrupa 
+                                </span>
+                                <span class="fs-5 fw-bold" style="color: var(--secondary-text);">
+                                    @if (city.MonthlyRentTry > 0)
+                                    {
+                                        <text>₺@city.MonthlyRentTry.ToString("N0") <span class="fs-6 fw-normal">/ay</span></text>
+                                    }
+                                    else
+                                    {
+                                        <text>— <span class="fs-6 fw-normal">/ay</span></text>
+                                    }
+                                </span>
+                            </div>
+
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle d-flex justify-content-center align-items-center me-3" style="width:40px; height:40px; background:rgba(24,30,75,0.05); color:var(--primary-navy);">
+                                    <i class="bi bi-book-half"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold" style="color: var(--primary-navy);">Akademik Başarı</h6>
+                                    <p class="text-muted small mb-0">Makale Skoru: @city.AcademicScore / 100</p>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center mb-3">
+                                <div class="rounded-circle d-flex justify-content-center align-items-center me-3" style="width:40px; height:40px; background:rgba(223,105,81,0.1); color:var(--accent-coral);">
+                                    <i class="bi bi-people-fill"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold" style="color: var(--primary-navy);">Sosyal Yaşam</h6>
+                                    <p class="text-muted small mb-0">Goldstein Skoru: @city.SocialScore / 100</p>
+                                </div>
+                            </div>
+
+                            <!-- YENİ EKLENEN GÜVENLİK BLOĞU -->
+                            <div class="d-flex align-items-center">
+                                <div class="rounded-circle d-flex justify-content-center align-items-center me-3" style="width:40px; height:40px; background:rgba(13, 110, 253, 0.1); color:#0d6efd;">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <div>
+                                    <h6 class="mb-0 fw-bold" style="color: var(--primary-navy);">Güvenlik & Huzur</h6>
+                                    <p class="text-muted small mb-0">Medya Tonu: @city.SecurityScore / 100</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </a>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .rounded-top-5 {
+        border-radius: 24px 24px 0 0 !important;
+    }
+
+    .destination-card {
+        border-radius: 24px;
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    }
+
+        .destination-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 25px 45px rgba(0,0,0,0.1) !important;
+        }
+</style>

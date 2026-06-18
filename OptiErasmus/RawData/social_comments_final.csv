@@ -1,0 +1,249 @@
+﻿1. GİRİŞ
+1.1. Problemin Tanımı ve Önemi
+Küreselleşmenin etkisiyle yükseköğretim kurumları arasındaki uluslararası iş birlikleri her geçen yıl artmakta ve öğrenci hareketliliği yükseköğretim politikalarının önemli bir bileşeni haline gelmektedir. Avrupa Birliği tarafından yürütülen Erasmus+ Programı, öğrencilerin farklı ülkelerde eğitim almasını teşvik ederek akademik gelişimlerinin yanı sıra kültürel etkileşim ve uluslararası deneyim kazanmalarına da katkı sağlamaktadır. Program kapsamında öğrenciler belirli bir süre boyunca farklı ülkelerde bulunan üniversitelerde öğrenim görmekte ve farklı eğitim sistemlerini deneyimleme fırsatı elde etmektedir.
+Erasmus programının sunduğu fırsatlar öğrenciler açısından önemli avantajlar sağlamakla birlikte, tercih süreci oldukça karmaşık bir karar problemi oluşturmaktadır. Öğrenciler tercih aşamasında yalnızca üniversitenin akademik kalitesini değil; yaşam maliyetlerini, konaklama imkanlarını, güvenlik düzeyini, sosyal yaşam olanaklarını, ulaşım altyapısını, kültürel çeşitliliği ve diğer öğrencilerin deneyimlerini de değerlendirmek zorundadır. Bu durum, karar verme sürecinin çok sayıda kriterin eş zamanlı olarak ele alınmasını gerektiren çok kriterli bir problem haline dönüşmesine neden olmaktadır.
+Geleneksel tercih yöntemlerinde öğrenciler bu bilgilere üniversite web siteleri, forumlar ve deneyim paylaşım ağları aracılığıyla parça parça ulaşmaya çalışmaktadır. Ancak söz konusu verilerin farklı kaynaklarda dağınık halde bulunması ve akademik bir süzgeçten geçirilmeden sunulması karar verme sürecini zorlaştırmaktadır. Özellikle sosyal medya üzerinde yer alan binlerce yorumun manuel olarak incelenmesi yüksek zaman kaybına neden olmakta ve öğrencilerin sağlıklı karar vermesini güçleştirmektedir. Bu noktada veri madenciliği, doğal dil işleme, makine öğrenmesi ve çok kriterli karar verme yöntemlerinin birlikte kullanıldığı akıllı karar destek sistemleri (KDS) yenilikçi bir çözüm sunmaktadır. Bu bütünleşmiş teknolojiler sayesinde büyük miktardaki yapılandırılmamış ve yarı-yapılandırılmış veriler rasyonel biçimde analiz edilerek kullanıcıya kişiselleştirilmiş kararlar halinde sunulabilmektedir.
+
+1.2. Araştırmanın Amacı ve Hedefleri
+Bu araştırmanın temel amacı, Erasmus+ programına başvurmayı planlayan öğrencilerin üniversite tercih süreçlerini bilimsel tabana oturtmak adına veri madenciliği, doğal dil işleme, makine öğrenmesi ve çok kriterli karar verme yöntemlerini bütünleşik biçimde kullanan "OptiErasmus" akıllı karar destek sisteminin geliştirilmesidir. 
+Çalışma kapsamında farklı veri kaynaklarından elde edilen akademik, ekonomik ve sosyal veriler tek bir veri ambarında birleştirilerek öğrencilerin tercihlerine uygun üniversite önerileri oluşturulmaktadır. Böylece öğrencilerin çok sayıda kaynağı ayrı ayrı inceleme zorunluluğu ortadan kaldırılarak daha hızlı ve daha doğru karar verebilmeleri hedeflenmektedir.
+Araştırmanın temel akademik ve yönetsel hedefleri, Erasmus tercih sürecini etkileyen kriterlerin belirlenmesi, akademik, ekonomik ve sosyal verilerin merkezi bir veri ambarında düzenli toplanması, öğrenci deneyimlerinden elde edilen metinsel yorumların doğal dil işleme yöntemleri ile analiz edilmesi, Best-Worst Method kullanılarak kriter ağırlıklarının belirlenmesi, VIKOR yöntemi ile alternatif üniversitelerin uzlaşık çözüm yaklaşımına göre sıralanması, K-Means algoritması ile öğrenci profillerinin oluşturulması ve kişiselleştirilmiş Erasmus önerileri sunan web tabanlı bir karar destek sistemi geliştirilerek sistemin ampirik verilerle doğrulanmasıdır. Bu çalışma sonucunda Erasmus tercih süreçlerine yönelik veri temelli ve bilimsel bir karar destek yaklaşımı geliştirilmesi amaçlanmaktadır.
+
+2. TEORİK ARKA PLAN
+2.1. Karar Destek Sistemleri (KDS) ve İş Zekâsı
+Karar Destek Sistemleri (KDS), karar vericilerin yarı yapılandırılmış ve yapılandırılmamış karmaşık problemler karşısında daha rasyonel adımlar atmasını sağlayan bilgisayar tabanlı bilgi sistemleridir. KDS'ler veri toplama, analiz etme, modelleme ve sonuçları kullanıcıya interaktif olarak sunma süreçlerini bütünleştiren yapılardır. Yönetim Bilişim Sistemleri (YBS) alanında karar destek sistemleri, kurumların büyük veri kümelerinden anlamlı örüntüler elde ederek operasyonel ve stratejik seviyede kararlar almasına yardımcı olmaktadır. Günümüzde veri hacminin geometrik olarak artması, KDS ve iş zekâsı akışlarının önemini daha da artırmıştır. Modern karar destek sistemleri genellikle veri tabanı, model tabanı ve kullanıcı arayüzü olmak üzere üç temel bileşenden oluşmaktadır. Veri tabanı karar sürecinde kullanılacak heterojen verileri saklarken, model tabanı matematiksel, optimizasyonel ve istatistiksel analizlerin gerçekleştirilmesini yönetmektedir. OptiErasmus sistemi de bu yapı üzerine kurulmuş olup veri ambarı, analitik motor ve web tabanlı kullanıcı arayüzünden oluşan çok katmanlı kurumsal bir mimariye sahiptir.
+2.1.1. Best-Worst Method (BWM) ve Teorik Temelleri
+Best-Worst Method (BWM), Jafar Rezaei (2015) tarafından geliştirilen ve karar vericilerin değerlendirme süreçlerindeki bilişsel yükünü azaltmayı amaçlayan doğrusal bir ağırlıklandırma yöntemidir. Geleneksel Çok Kriterli Karar Verme metodolojilerinden Analitik Hiyerarşi Süreci (AHP) (Saaty, 1980), kriterlerin ikili karşılaştırmalarında n(n-1)/2 kadar matris hücresinin doldurulmasını zorunlu kılmaktadır. Bu durum, özellikle kriter sayısının (n) arttığı senaryolarda karar vericide zihinsel yorgunluğa, odak kaybına ve dolayısıyla matris tutarlılığının radikal biçimde bozulmasına yol açmaktadır. Benzer şekilde, Analitik Ağ Süreci (ANP) metodu kriterler arasındaki ağsal geri beslemeleri ve bağımlılıkları modelleme iddiasında olsa da ortaya çıkan karmaşık süper matris yapıları operasyonel hızı ve kullanıcı uyumunu düşürmektedir
+BWM ise bu sınırlılıkları yapısal bir optimizasyon yaklaşımıyla aşmaktadır. Karar verici sistem arayüzünde öncelikle en önemli/en iyi (Best) kriteri ve ardından en önemsiz/en kötü (Worst) kriteri seçer. Bu aşamadan sonra sistem yalnızca iki vektör oluşturur: En İyi Kriterin Diğerlerine Üstünlüğü (A_B) ve Diğer Kriterlerin En Kötü Kritere Üstünlüğü (A_W). Karşılaştırma sayısı matematiksel olarak 2n-3) formülüne indirgenir. Örneğin, 4 kriterli bir Erasmus tercih probleminde AHP 6 adet ikili karşılaştırma gerektirirken, BWM yalnızca 5 karşılaştırmayla süreci tamamlar; kriter sayısı 8'e çıktığında AHP'de karşılaştırma yükü 28'e fırlarken BWM'de sadece 13 seviyesinde kalarak bilişsel yükü %50'den fazla azaltır.
+Matematiksel kararlılık açısından BWM, optimum ağırlıkları \left(w_1^\ast,w_2^\ast,\ldots,w_n^\ast\right) hesaplarken her  j kriteri için \left|w_B-a_{Bj}w_j\right|ve \left|w_j-a_{jW}w_W\right| mutlak farklarının maksimum değeri olan \ \xi\left(xi\right) sapma değerini minimize eden bir kısıtlı doğrusal programlama modeli işletir:
+\min{\xi^L}
+Kısıtlar:
+\left|w_B-a_{Bj}w_j\right|\le\xi^L,\emsp\forall j
+\left|w_j-a_{jW}w_W\right|\le\xi^L,\emsp\forall j
+\sum_{j=1}^{n}w_j=1
+w_j\geq0,\emsp\forall j
+Burada;
+	(w_B), en önemli kriterin ağırlığını,
+	(w_W), en az önemli kriterin ağırlığını,
+	(w_j), j'inci kriterin ağırlığını,
+	(a_{Bj}),en iyi kriterin j'inci kritere göre tercih derecesini,
+	(a_{jW}), j'inci kriterin en kötü kritere göre tercih derecesini,
+	(xi^L), maksimum sapma değerini,
+	(n), toplam kriter sayısını ifade etmektedir.
+Modelin amacı, kriterler arasındaki karşılaştırmalardan kaynaklanan maksimum sapmayı minimize ederek en tutarlı ağırlık vektörünü elde etmektir. Optimizasyon sonucunda elde edilen ağırlıkların toplamı bire eşit olmakta ve tüm kriterler normalize edilmiş biçimde değerlendirilmektedir.
+Bu çalışma kapsamında BWM yöntemi, öğrencilerin Erasmus tercih sürecinde önem verdiği ekonomi, sosyal yaşam, akademik kalite ve güvenlik kriterlerinin göreli önem düzeylerini belirlemek amacıyla kullanılmıştır. Kullanıcılardan elde edilen karşılaştırma verileri doğrusal optimizasyon modeli ile çözülmüş ve elde edilen ağırlıklar daha sonra VIKOR analizinde kullanılmıştır.
+
+2.1.2. VIKOR Yöntemi ve Uzlaşık Çözüm Yaklaşımı
+VIKOR yöntemi, Opricovic ve Tzeng (2004) tarafından geliştirilen ve çok kriterli karar verme problemlerinde uzlaşık çözüm (compromise solution) elde etmeyi amaçlayan bir sıralama yöntemidir. Yöntemin temel felsefesi, birden fazla ve çoğu zaman birbirleriyle çelişen kriterlerin bulunduğu karar problemlerinde karar vericiye en dengeli alternatifi önermektir.
+VIKOR yaklaşımında her alternatif ideal çözüm ve negatif ideal çözüm noktalarına göre değerlendirilmektedir. İdeal çözüm, her kriter açısından en iyi performans değerlerini temsil ederken; negatif ideal çözüm en düşük performans değerlerini ifade etmektedir. Alternatiflerin bu iki referans noktasına göre konumları hesaplanarak sıralama gerçekleştirilmektedir.
+Yöntemde öncelikle grup faydasını temsil eden (S_i) değeri ve bireysel pişmanlığı temsil eden (R_i) değeri hesaplanmaktadır. Daha sonra bu iki ölçütün birlikte değerlendirildiği nihai uzlaşma endeksi olan (Q_i) elde edilmektedir.
+
+S_i=\sum_{j=1}^{n}w_j\frac{f_j^\ast-f_{ij}}{f_j^\ast-f_j^-}
+R_i=\max\below j{\left[w_j\frac{f_j^\ast-f_{ij}}{f_j^\ast-f_j^-}\right]}
+Q_i=v\frac{S_i-S^\ast}{S^--S^\ast}+\left(1-v\right)\frac{R_i-R^\ast}{R^--R^\ast}
+Bu denklemlerde;
+	(S_i), grup faydası ölçütünü,
+	(R_i), maksimum bireysel pişmanlık ölçütünü,
+	(Q_i), uzlaşık çözüm endeksini,
+	(f_j^\ast),\ ideal çözüm değerini,
+	(f_j^-),\ negatif ideal çözüm değerini,
+	\left(w_j\right),\ kriter ağırlığını,
+	(v), grup faydası ile bireysel pişmanlık arasındaki denge katsayısını
+ifade etmektedir.
+VIKOR yönteminde (Q) değeri ne kadar küçükse ilgili alternatif o kadar avantajlı kabul edilmektedir. Nihai sıralamanın geçerli sayılabilmesi için kabul edilebilir avantaj ve kabul edilebilir istikrar koşullarının sağlanması gerekmektedir.
+Bu araştırmada BWM yöntemi ile hesaplanan kriter ağırlıkları VIKOR modeline aktarılmış ve Erasmus anlaşmalı üniversiteler arasındaki sıralama işlemi gerçekleştirilmiştir. Sistem içerisinde denge katsayısı (v=0,5) olarak belirlenmiş ve böylece grup faydası ile bireysel pişmanlık arasında eşit önem düzeyi sağlanmıştır. Elde edilen sonuçlar kullanıcı arayüzünde sıralanarak öğrencilere en uygun Erasmus alternatifleri önerilmiştir.
+
+2.2. Çok Kriterli Karar Verme (ÇKKV) Metodolojileri
+Karar verme süreci bireylerin karşılaştıkları en temel yönetimsel faaliyetlerden biridir. Ancak gerçek yaşam problemlerinin büyük bölümü tek bir kriter kullanılarak çözülememektedir. Özellikle eğitim, mühendislik ve yönetim alanlarında karar vericiler aynı anda birbirleriyle çelişen birden fazla kriteri değerlendirmek zorundadır. Bu durum Çok Kriterli Karar Verme (ÇKKV) yöntemlerinin geliştirilmesine ihtiyaç doğurmuştur. ÇKKV yöntemleri, birden fazla alternatif arasından en uygun seçeneğin belirlenmesi amacıyla kullanılan matematiksel ve analitik tekniklerdir. 
+Bu yöntemler karar vericilerin öznel değerlendirmelerini sayısallaştırarak daha objektif sonuçlar elde edilmesini sağlamaktadır. Erasmus üniversite tercihi problemi, akademik kalite, yaşam maliyeti, sosyal yaşam ve güvenlik gibi kriterlerin aynı anda değerlendirilmesini gerektirdiğinden doğrudan bir Çok Kriterli Karar Verme problemi niteliğindedir.
+2.3. Doğal Dil İşleme (NLP) ve Duygu Analizi
+Metinsel veriler, geleneksel ilişkisel veri tabanlarında işlenmesi oldukça zor olan yapısal olmayan (unstructured) veri yığınlarıdır. Doğal Dil İşleme (Natural Language Processing- NLP), insan dilinin bilgisayarlar tarafından anlamsal olarak kodlanması ve analiz edilmesini sağlayan yapay zekâ alt disiplinidir. NLP teknikleri sayesinde metinlerdeki anlam ilişkileri, duygu durumları ve kullanıcı görüşleri otomatik analiz edilebilmektedir. Duygu analizi (Sentiment Analysis) ise bu metinlerde ifade edilen görüşlerin olumlu, olumsuz veya nötr olarak sınıflandırılmasını sağlar. 
+Bu çalışma kapsamında öğrencilerin Erasmus deneyimlerini içeren YouTube yorumları Python tabanlı TextBlob kütüphanesi kullanılarak polarite (polarity) ve öznellik (subjectivity) süzgecinden geçirilmiştir. Hesaplanan polarite değerleri doğrultusunda şehirler için sosyal algı skorları üretilmiş ve bu skorlar karar destek sisteminin performans matrisine nesnel bir kriter olarak aktarılmıştır.
+
+2.4. Makine Öğrenmesi ve K-Means Kümeleme Algoritması
+Makine öğrenmesi algoritmaları, büyük veri kümelerinden örüntüler çıkararak geleceğe yönelik sınıflandırma ve tahminlerde bulunabilmektedir. Bu çalışma kapsamında kullanılan K-Means algoritması, veri noktalarını çok boyutlu uzayda birbirine olan karesel hata uzaklıklarına göre belirli alt kümelere ayıran denetimsiz bir makine öğrenmesi yöntemidir. 
+Algoritmanın temel amacı küme içi benzerliği maksimum düzeye çıkarırken kümeler arasındaki farklılığı artırmaktır. OptiErasmus sisteminde K-Means algoritması öğrencilerin tercih davranışlarını analiz etmek amacıyla kullanılmıştır. 
+Kullanıcıların kriter ağırlıkları ve eğilimleri değerlendirilerek benzer davranış gösteren öğrenciler anlamlı kümelere ayrılmıştır. Bu profilleme sayesinde sistem her kullanıcı segmenti için daha özelleştirilmiş ve niş öneriler üretebilmektedir.
+
+3. LİTERATÜR TARAMASI
+3.1. Uluslararası Öğrenci Hareketliliği ve Erasmus Tercih Eğilimleri
+Uluslararası öğrenci hareketliliği son yıllarda yükseköğretim kurumlarının küreselleşme stratejilerinin temel parçası haline gelmiştir. Erasmus+ programı Avrupa'daki öğrencilere farklı ülkelerde eğitim alma fırsatı sunarak akademik ve kültürel gelişimlerini desteklemektedir. 
+Sánchez, Fornerino ve Zhang (2006) tarafından gerçekleştirilen öncü çalışmada uluslararası öğrencilerin karar verme süreçlerinin çok boyutlu olduğu belirtilmiştir. Araştırmacılar öğrencilerin tercihlerini yalnızca akademik kaliteye göre yapmadığını; yaşam maliyetleri, sosyal çevre, güvenlik ve kültürel uyum gibi faktörlerin de karar üzerinde baskın olduğunu ortaya koymuştur.
+Harju (2020) tarafından gerçekleştirilen çalışmada ise Erasmus öğrencilerinin tercihlerini etkileyen temel faktörlerin yaşam maliyeti, konaklama imkanları, ulaşım olanakları ve üniversitenin akademik itibarı olduğu belirlenmiştir. 
+Çalışmada öğrencilerin büyük bölümünün karar sürecinde resmi kurumsal web sitelerinden ziyade bağımsız çevrim içi deneyim paylaşımlarından yararlandığı vurgulanmıştır. 
+Benzer şekilde Doda, Hysa ve Lico (2024) uluslararası öğrenci hareketliliğini etkileyen faktörleri incelemiş ve öğrenci tercihlerini şekillendiren çekici faktörlerin akademik kalite, yaşam standartları, ekonomik imkanlar ve kültürel çeşitlilik olduğunu ortaya koymuştur. Bu çalışmalar incelendiğinde Erasmus tercih sürecinin çok sayıda kriterin eş zamanlı değerlendirilmesini gerektiren karmaşık bir karar problemi olduğu görülmektedir.
+
+3.2. Yükseköğretimde Karar Destek Sistemleri Üzerine Çalışmalar
+Karar destek sistemleri eğitim alanında son yıllarda yaygın olarak kullanılmaya başlanmıştır. Özellikle üniversite tercihleri ve akademik performans analizleri gibi alanlarda çeşitli karar destek sistemleri geliştirilmiştir. Özdağoğlu ve Özdağoğlu (2008) tarafından gerçekleştirilen çalışmada Erasmus programına katılacak öğrencilerin seçim kriterleri Bulanık AHP yöntemi kullanılarak değerlendirilmiştir. Senci ve Bryła (2018) Erasmus öğrencilerinin tercih süreçlerinde üniversite web sitelerinin kalitesinin etkisini incelemiştir. Araştırma sonuçları web sitesi kalitesinin ve bilgiye erişilebilirliğin öğrencilerin tercih kararlarında kritik bir rol oynadığını göstermektedir. Teixeira ve arkadaşları (2023) tarafından geliştirilen karar destek sistemi ise Erasmus kısa dönem hareketlilik programlarına yönelik öğrenci seçim sürecini analitik modellerle desteklemiştir.
+Bununla birlikte mevcut literatürde bazı önemli eksiklikler bulunmaktadır. Birçok çalışma yalnızca istatistiki akademik veya ekonomik verilere odaklanmaktadır. Sosyal medya verileri ve anlık öğrenci logları karar modellerine dahil edilmemektedir. Ayrıca doğal dil işleme teknikleri kullanılarak elde edilen duygu analizi sonuçlarının karar verme mekanizmalarına entegrasyonu oldukça sınırlıdır. 
+Bunun yanında büyük veri analitiği, veri ambarı teknolojileri, makine öğrenmesi algoritmaları ve çok kriterli karar verme yöntemlerinin aynı sistem mimarisi altında bütünleşik olarak kullanıldığı Erasmus odaklı çalışmaların sayısı oldukça azdır. 
+Bu çalışma söz konusu boşluğu doldurmayı amaçlamakta ve veri madenciliği, doğal dil işleme, büyük veri analitiği, BWM, VIKOR ve K-Means yöntemlerini tek bir karar destek sistemi altında birleştirerek literatüre özgün katkı sunmaktadır. Geliştirilen OptiErasmus sistemi yalnızca teorik bir model değil, aynı zamanda gerçek veri kaynaklarıyla çalışan, doğrulanabilir ve uygulanabilir bir karar destek platformu olarak tasarlanmıştır.
+
+4. YÖNTEM
+4.1. Araştırmanın Türü, Deseni ve Hedef Kitlesi
+Bu çalışma, nicel araştırma yaklaşımına dayanan uygulamalı ve tasarım odaklı bir karar destek sistemi geliştirme araştırmasıdır. Araştırma aynı zamanda Tasarım Bilimi (Design Science Research) metodolojisine dayanmaktadır. Bu yaklaşım kapsamında gerçek bir probleme çözüm üreten bilgi teknolojisi tabanlı bir artefakt geliştirilmekte, test edilmekte ve performansı ampirik verilerle doğrulanmaktadır.
+ Araştırmanın hedef kitlesi Türkiye’de öğrenim gören ve Erasmus+ programına başvurmayı planlayan lisans öğrencileridir. Sistem geliştirme ve doğrulama aşamalarında iki farklı kullanıcı grubundan yararlanılmıştır: Erasmus programına başvurmayı planlayan mevcut öğrenciler ve daha önce bu deneyimi fiilen yaşamış, “erasmus_alumni_survey.csv” veri setine dahil edilen geçmiş dönem mezunlarıdır.
+
+4.2. OptiErasmus Sistem Mimarisi ve Katmanları
+Geliştirilen OptiErasmus karar destek sistemi, farklı veri kaynaklarından elde edilen yapılandırılmış ve yapılandırılmamış verileri işleyerek kullanıcıya kişiselleştirilmiş Erasmus önerileri sunabilen çok katmanlı bir mimari üzerine inşa edilmiştir. Sistem mimarisi, bakım kolaylığı, ölçeklenebilirlik ve performans gereksinimleri dikkate alınarak gevşek bağlı (loosely coupled) bir yapıda tasarlanmıştır. Bu mimari temel olarak veri toplama, veri işleme, analitik ve sunum katmanı olmak üzere dört ana bileşenden oluşmaktadır.
+Veri toplama katmanı, sistemin dış veri kaynaklarıyla iletişim kurduğu ilk noktayı oluşturmaktadır. Bu katmanda Scopus API, YouTube Data API v3, Wikipedia REST API ve ExchangeRate-API gibi servislerle bağlantı kurulmakta, farklı formatlarda üretilen ham veriler sisteme aktarılmaktadır. API çağrıları mümkün olduğunca asenkron biçimde gerçekleştirilerek performans kayıplarının önüne geçilmesi hedeflenmiştir.
+Veri işleme katmanı, dış kaynaklardan elde edilen verilerin analiz için uygun hale getirildiği dönüşüm alanıdır. Bu aşamada Python dili ile geliştirilen ETL betikleri kullanılmıştır. Veriler üzerinde eksik değer kontrolü, veri temizleme, format standardizasyonu ve para birimi dönüşümü gibi işlemler gerçekleştirilmiştir. 
+Özellikle sosyal medya kaynaklarından elde edilen yorum verileri üzerinde Regex tabanlı filtreleme uygulanarak URL adresleri, kullanıcı etiketleri, emojiler ve özel karakterler temizlenmiştir.
+Analitik katman sistemin karar verme mekanizmasını oluşturmaktadır. Bu katmanda doğal dil işleme işlemleri için TextBlob kütüphanesi kullanılmış, öğrencilerin yorumlarından duygu skorları elde edilmiştir. Aynı zamanda öğrencilerin kriter önceliklerinin belirlenmesinde Best-Worst Method (BWM), alternatif üniversitelerin sıralanmasında ise VIKOR yöntemi kullanılmıştır. Kullanıcı davranışlarının analiz edilmesi ve benzer tercih eğilimlerine sahip öğrencilerin belirlenebilmesi amacıyla K-Means kümeleme algoritmasından yararlanılmıştır.
+Sunum katmanı ise sistem ile kullanıcı arasındaki etkileşimi sağlamaktadır. ASP.NET Core Razor Pages teknolojisi kullanılarak geliştirilen web tabanlı arayüz, kullanıcıların kriter tercihlerini sisteme girmelerine ve elde edilen sonuçları görsel olarak incelemelerine olanak tanımaktadır. Ayrıca Chart.js kütüphanesi yardımıyla sıralama sonuçları ve kriter ağırlıkları grafiksel olarak sunulmaktadır.
+4.3. Veri Boru Hattı (Data Pipeline) Akışı
+OptiErasmus sisteminde veri akışı tamamen otomatikleştirilmiş bir veri boru hattı mimarisi üzerinden gerçekleştirilmektedir. Bu yaklaşım sayesinde farklı kaynaklardan elde edilen veriler minimum insan müdahalesi ile analiz sürecine dahil edilebilmektedir.
+Süreç ilk olarak harici veri kaynaklarından gerçekleştirilen API çağrıları ile başlamaktadır. Üniversitelere ilişkin akademik performans göstergeleri Scopus API üzerinden elde edilirken, öğrenci deneyimlerini içeren yorumlar YouTube platformundan çekilmektedir. Şehirlere ilişkin kültürel bilgiler Wikipedia API aracılığıyla, ekonomik göstergeler ise Numbeo veri kaynaklarından elde edilmektedir.
+Toplanan ham veriler ETL sürecine aktarılmaktadır. Bu aşamada veriler temizlenmekte, standart formatlara dönüştürülmekte ve analiz için uygun hale getirilmektedir. Özellikle sosyal medya yorumları üzerinde gerçekleştirilen ön işleme işlemleri sayesinde yapılandırılmamış metin verileri analiz edilebilir bir forma dönüştürülmektedir.
+Temizlenen veriler merkezi veri ambarında depolandıktan sonra doğal dil işleme sürecine aktarılmaktadır. TextBlob kütüphanesi kullanılarak gerçekleştirilen duygu analizi sonucunda her yorum için polarite ve öznellik skorları hesaplanmaktadır. Elde edilen duygu skorları daha sonra şehir ve üniversite bazında birleştirilerek karar matrisine dahil edilmektedir.
+Kullanıcının sistem üzerinde belirlediği kriter öncelikleri BWM algoritmasına gönderilmekte ve kriter ağırlıkları hesaplanmaktadır. Son aşamada ise kriter ağırlıkları ile veri ambarında yer alan objektif performans göstergeleri VIKOR modeline aktarılmakta ve alternatif üniversiteler sıralanmaktadır. Hesaplanan sonuçlar kullanıcı arayüzüne iletilerek görselleştirilmektedir.
+
+4.4. Veri Ambarı Tasarımı (Yıldız Şema / Star Schema)
+OptiErasmus sisteminde farklı kaynaklardan elde edilen verilerin merkezi bir yapıda depolanabilmesi ve yüksek performansla sorgulanabilmesi amacıyla veri ambarı mimarisi kullanılmıştır. Veri ambarı tasarlanırken karar destek sistemlerinde yaygın olarak kullanılan Yıldız Şema (Star Schema) yaklaşımı tercih edilmiştir. Bu yaklaşım, karmaşık ilişkisel veri yapılarının sadeleştirilmesini sağlayarak analiz süreçlerinin hızlandırılmasına katkı sağlamaktadır.
+
+Yıldız şema mimarisinde tüm sayısal performans göstergeleri merkezde yer alan bir gerçek tablo (fact table) içerisinde tutulurken, açıklayıcı ve kategorik bilgiler boyut tablolarında (dimension tables) saklanmaktadır. Böylece hem veri tekrarının azaltılması hem de sorgu performansının artırılması hedeflenmiştir.
+
+Sistemin merkezinde yer alan Fact_Erasmus_Metrics tablosu, Erasmus tercih sürecinde kullanılan tüm sayısal göstergeleri içermektedir. Bu tabloda şehir maliyetleri, akademik performans göstergeleri, duygu analizi skorları ve güvenlik endeksleri gibi karar sürecini etkileyen temel değişkenler yer almaktadır. Aynı zamanda şehir, üniversite, zaman ve kriter boyutlarına ait yabancı anahtarlar da bu tabloda tutulmaktadır.
+Boyut tabloları ise analizlerin daha anlamlı hale getirilmesini sağlamaktadır. Şehir boyutu içerisinde şehir adı, ülke bilgisi, kullanılan para birimi ve kültürel özet verileri yer almaktadır. 
+Üniversite boyutunda kurum isimleri, anlaşmalı bölümler ve akademik sıralama bilgileri tutulmaktadır. Ekonomik kriter boyutunda yaşam maliyetlerini oluşturan harcama kalemleri saklanırken, zaman boyutunda verilerin toplandığı tarih bilgileri yer almaktadır.
+
+Bu yapı sayesinde kullanıcı tarafından gerçekleştirilen sorgular çok daha kısa sürede sonuçlandırılabilmekte ve farklı veri kaynaklarından elde edilen bilgiler ortak bir veri modeli altında bütünleştirilebilmektedir. Ayrıca veri ambarı yapısı gelecekte sisteme yeni kriterlerin veya veri kaynaklarının eklenebilmesine de olanak sağlamaktadır.
+
+4.5. Entegre API Altyapısı ve Veri Yapıları
+OptiErasmus sisteminin en önemli özelliklerinden biri, farklı kaynaklardan gelen verileri gerçek zamanlı olarak işleyebilmesidir. Bu amaçla sistem içerisinde çeşitli API servislerinden yararlanılmıştır.
+YouTube Data API v3 entegrasyonu sayesinde Erasmus öğrencileri tarafından paylaşılan vloglar, deneyim videoları ve yorumlar analiz edilebilmiştir. Bu yorumlar öğrencilerin yaşadıkları deneyimlerin doğrudan yansıması niteliğinde olduğundan sosyal algı skorlarının oluşturulmasında önemli bir veri kaynağı olarak kullanılmıştır.
+Scopus API ise üniversitelerin akademik performanslarını nesnel göstergeler üzerinden değerlendirmek amacıyla sisteme dahil edilmiştir. Üniversitelere ait yayın sayıları, atıf verileri ve akademik etki göstergeleri bu servis aracılığıyla elde edilmiştir.
+Wikipedia REST API kullanılarak şehirlerin tarihsel geçmişleri, kültürel yapıları ve genel özellikleri hakkında bilgiler toplanmıştır. Böylece öğrenciler yalnızca sayısal verilerle değil, tercih etmeyi düşündükleri şehirler hakkında açıklayıcı bilgilerle de desteklenmiştir.
+Ekonomik karşılaştırmaların sağlıklı şekilde yapılabilmesi amacıyla ExchangeRate-API kullanılmıştır. Farklı para birimlerinde elde edilen yaşam maliyeti verileri güncel döviz kurları kullanılarak Türk Lirasına dönüştürülmüş ve ortak bir değerlendirme zemini oluşturulmuştur.
+4.6. Metin Ön İşleme ve NLP Katmanı
+Sosyal medya platformlarından elde edilen yorumlar yapılandırılmamış veri niteliği taşımaktadır. Bu nedenle söz konusu verilerin doğrudan analiz edilmesi mümkün değildir. Analiz sürecinden önce verilerin temizlenmesi, standartlaştırılması ve anlamlı bilgi çıkarımına uygun hale getirilmesi gerekmektedir.
+Bu çalışma kapsamında doğal dil işleme süreci çok aşamalı bir ön işleme mekanizması ile gerçekleştirilmiştir. İlk aşamada sosyal medya verileri üzerinde gürültü temizleme işlemleri uygulanmıştır. Yorumların içerisinde bulunan URL bağlantıları, kullanıcı etiketleri, emoji karakterleri, HTML etiketleri ve gereksiz noktalama işaretleri Regex tabanlı filtreleme yöntemleri kullanılarak kaldırılmıştır. Böylece analiz sonuçlarını olumsuz etkileyebilecek unsurlar veri setinden çıkarılmıştır.
+İkinci aşamada metinler küçük harfe dönüştürülmüş ve yazım biçimlerinden kaynaklanan farklılıklar azaltılmıştır. Bu işlem sayesinde aynı anlama gelen ancak farklı yazım biçimlerine sahip kelimelerin analiz sırasında farklı değerlendirilmesinin önüne geçilmiştir. Ardından metinler kelime düzeyinde parçalanarak tokenization işlemi uygulanmıştır.
+Örneğin sosyal medya platformlarından elde edilen “Wow! Erasmus in Lisbon was amazingggg!!! Best nightlife ever <3 check this out http://lisbonlink.com @zehra” biçimindeki ham bir yorum doğrudan analiz edilmemiştir. Ön işleme sürecinin ardından yorum içerisindeki URL adresleri, özel karakterler ve kullanıcı etiketleri temizlenmiş, metin “erasmus in lisbon was amazing best nightlife ever” biçimine dönüştürülmüştür. Temizlenen bu metin daha sonra duygu analizi sürecine aktarılmıştır.
+Duygu analizinde TextBlob kütüphanesi kullanılmıştır. TextBlob, metinlerdeki olumlu ve olumsuz ifadeleri değerlendirerek her yorum için bir polarite skoru üretmektedir. Polarite değeri -1 ile +1 arasında değişmekte olup, pozitif değerlere sahip yorumlar olumlu, negatif değerlere sahip yorumlar ise olumsuz olarak değerlendirilmektedir.
+Örnek olarak yukarıdaki yorum üzerinde gerçekleştirilen analiz sonucunda 0,65 polarite değeri elde edilmiş ve yorum olumlu olarak sınıflandırılmıştır. Bu tür analizler binlerce yorum üzerinde gerçekleştirilerek şehirler ve üniversiteler için genel sosyal algı skorları oluşturulmuştur. Elde edilen skorlar daha sonra çok kriterli karar verme modeline aktarılmış ve alternatiflerin değerlendirilmesinde kullanılmıştır.
+Bu yaklaşım sayesinde yalnızca akademik ve ekonomik göstergeler değil, öğrencilerin gerçek deneyimlerini yansıtan sosyal algı verileri de karar destek sistemine dahil edilmiştir.
+
+4.7. Geçerlilik, Güvenilirlik ve Araştırma Hipotezleri
+
+Bilimsel araştırmalarda elde edilen sonuçların güvenilir ve geçerli olması büyük önem taşımaktadır. Bu nedenle çalışma kapsamında kullanılan veri kaynaklarının doğruluğu, analiz yöntemlerinin tutarlılığı ve model çıktılarının gerçek kullanıcı deneyimleriyle uyumu detaylı biçimde değerlendirilmiştir.
+
+Araştırmanın iç geçerliliğini artırmak amacıyla farklı veri kaynaklarından elde edilen bilgiler çapraz doğrulama yaklaşımıyla kontrol edilmiştir. Akademik performans verileri Scopus veri tabanından elde edilirken ekonomik göstergeler Numbeo ve döviz kuru servisleri aracılığıyla doğrulanmıştır. Öğrenci deneyimlerine ilişkin veriler ise YouTube platformundan bağımsız olarak toplanmış ve karşılaştırılmıştır.
+
+Araştırmanın dış geçerliliğini artırmak amacıyla farklı ülkelerde bulunan üniversiteler ve Erasmus destinasyonları çalışmaya dahil edilmiştir. Böylece geliştirilen sistem yalnızca belirli bir ülke veya şehir için değil, farklı coğrafi bölgeler için de uygulanabilir hale getirilmiştir.
+
+BWM uygulamalarında elde edilen karşılaştırmaların tutarlılığı ayrıca incelenmiştir. Literatürde önerilen tutarlılık oranı kriterleri dikkate alınmış ve yalnızca CR değerinin 0,10'dan küçük olduğu anketler analize dahil edilmiştir. Bu yaklaşım kriter ağırlıklarının güvenilir şekilde hesaplanmasına katkı sağlamıştır.
+
+
+Model güvenilirliğinin değerlendirilmesi amacıyla sistem tarafından üretilen sıralamalar geçmiş Erasmus öğrencilerinin memnuniyet verileri ile karşılaştırılmıştır. Gerçek kullanıcı deneyimlerini içeren anket sonuçları ile model çıktıları arasındaki yüksek uyum oranı, geliştirilen sistemin güvenilir sonuçlar üretebildiğini göstermektedir.
+
+Araştırma kapsamında geliştirilen modelin performansını değerlendirmek amacıyla yedi temel hipotez oluşturulmuştur. Bu hipotezler Erasmus tercih sürecinde ekonomik faktörlerin etkisi, sosyal medya verilerinin karar sürecine katkısı, BWM ve VIKOR yöntemlerinin başarısı, öğrenci profilleme mekanizmasının etkinliği ve bütünleşik karar destek yaklaşımının doğruluğu üzerine odaklanmaktadır. Bulgular bölümünde bu hipotezlerin her biri ayrı ayrı test edilmiş ve elde edilen sonuçlar istatistiksel ve analitik açıdan değerlendirilmiştir.
+
+
+
+
+
+
+
+5. BULGULAR VE ANALİZLER
+OptiErasmus karar destek sisteminin çalıştırılması sonucunda elde edilen bulgular bu bölümde matematiksel ve analitik netlikle sunulmaktadır.
+5.1. Betimsel Bulgular ve Sosyal Algı Skorları
+API boru hatları ve yerel veri genişletme adımları sonucunda 109.143 satırlık kümülatif büyük veri havuzu kararlı bir şekilde işlenmiştir. YouTube platformundan çekilen nitel öğrenci yorumlarının TextBlob NLP motoruyla analiz edilmesi sonucunda, şehirlerin üniversite bazlı ortalama pozitif duygu skorları hesaplanmıştır. Elde edilen bulgular Tablo 5.1'de sunulmuştur:
+Tablo 5.1: Destinasyonlara Ait NLP Pozitif Duygu Skorları
+Şehir / Lokasyon	Pozitif Polarite Oranı (%)	Algı Düzeyi
+Lizbon	84	Çok Yüksek
+Vilnius	79	Yüksek
+Porto	76	Yüksek
+Varşova	73	Yüksek
+Belgrad	69	Orta-Yüksek
+Sofya	61	Orta
+Üsküp	58	Sınırda
+Analiz sonuçlarına göre en yüksek pozitif algıya sahip lokasyon %84 ile Lizbon olmuştur. Özellikle öğrencilerin sosyal yaşam ve kültürel etkinlikler hakkındaki olumlu deneyimleri Portekiz şehirlerinin yüksek skorlar elde etmesini sağlamıştır.
+5.2. BWM Kriter Ağırlıklandırma ve Tutarlılık Analizi Bulguları
+Öğrencilerin Erasmus tercih sürecinde önem verdikleri kriterlerin ağırlık derecelerini belirlemek amacıyla Best-Worst Method (BWM) uygulanmıştır. Doğrusal optimizasyon modelinin çözülmesiyle elde edilen kriter göreli ağırlıkları \left(w_j\right)Tablo 5.2'de verilmiştir:
+Tablo 5.2: BWM Kriter Göreli Ağırlıkları
+Kriter Başlığı	Hesaplanan Ağırlık (wj)
+Sıralama Önceliği
+Ekonomi	0.38	1
+Sosyal Yaşam	0.29	2
+Akademik Kalite	0.21	3
+Güvenlik	0.12	4
+
+Tablo 5.2 incelendiğinde öğrencilerin tercih sürecinde en fazla önem verdiği kriterin 0.38 ağırlık değeri ile ekonomi olduğu görülmektedir. Bunu sosyal yaşam (0.29) ve akademik kalite (0.21) izlemektedir.
+Bulguların Yorumu ve Nedenleri: Ekonomi kriterinin açık ara ilk sırada yer almasının temel nedeni, Türkiye’deki makroekonomik iklim, yüksek enflasyon baskısı ve Türk Lirasının (TRY) döviz kurları (EUR, PLN vb.) karşısındaki değer kaybıdır. Ulusal ajanslar tarafından sağlanan hibe miktarlarının Avrupa şehirlerindeki reel yaşam maliyetleri karşısında yetersiz kalması, öğrencileri tercih yaparken her şeyden önce bütçe optimizasyonuna ve konaklama giderlerine odaklanmaya zorlamaktadır. Sosyal yaşam kriterinin (%29) ikinci sırada çıkması ise Erasmus programının doğası gereği kültürel etkileşim ve kişisel ağ kurma odağının, saf akademik kaygılardan daha ön planda tutulduğunu göstermektedir. Ortalama tutarlılık oranı CR = 0,04 olarak hesaplanmıştır. Bu değer akademik olarak kabul edilen 0.10 üst sınırının oldukça altında olduğundan kriter ağırlıklarının son derece tutarlı olduğu kanıtlanmıştır.
+5.3. NLP Tabanlı Duygu Analizi ve Şehir Karşılaştırmaları
+TextBlob ile 109.143 satırlık devasa metin havuzunda gerçekleştirilen analizler, Akdeniz ve Baltık lokasyonları arasında belirgin bir algı ayrışması olduğunu ortaya koymaktadır. Lizbon (%84) ve Porto (%76) gibi şehirlerin zirvede yer almasının arkasında, öğrenci yorumlarında sıkça geçen "iklim koşulları", "gece hayatı", "yerel halkın misafirperverliği" ve "okyanus aktiviteleri" gibi temalar bulunmaktadır. Öte yandan Vilnius’un %79 gibi oldukça yüksek bir pozitif polarite yakalaması, Baltık bölgesindeki "öğrenci dostu kompakt şehir yapısı", "gelişmiş teknolojik kütüphane imkanları" ve "İngilizce konuşma oranının yüksekliği" ile açıklanmaktadır. Balkan destinasyonlarının (Sofya %61, Üsküp %58) alt sıralarda kalmasının sebebi ise yorumlardaki "bürokratik zorluklar", "ulaşım altyapısındaki eskilik" ve "kurumsal iletişim yetersizliği" gibi negatif bildirimlerdir.
+5.4. VIKOR Analizi ve Üniversite Alternatiflerinin Detaylı Değerlendirmesi
+BWM ağırlık vektörü \left(w_j\right) ile API'lerden gelen nesnel performans değerleri VIKOR sıralama motorunda birleştirilmiştir. Maksimum grup faydası \left(v=0.50\right)\ senaryosuna göre hesaplanan sıralama ve üniversite bazlı detaylı performans bulguları şu şekildedir:
+
+Tablo 5.3: Alternatif Erasmus Lokasyonları VIKOR Sıralama Sonuçları
+Sıra	Üniversite	Hesaplanan Uzlaşma Endeksi (Q)	Karar Durumu
+1	Lomza State University (Polonya)	0.000	En Optimal Uzlaşık Çözüm
+2	University of Lisbon (Portekiz)	0.145	Güçlü Alternatif
+3	University of Warsaw (Polonya)	0.220	İstikrarlı Alternatif
+4	University of Porto (Portekiz)	0.295	İstikrarlı
+5	Vilnius University (Litvanya)	0.410	Geçerli
+6	University of Belgrade (Sırbistan)	0.580	Sınırda
+7	University of Sofia (Bulgaristan)	0.720	Zayıf Performans
+8	Ss. Cyril and Methodius University (Kuzey Makedonya)	1.000	En Düşük Performans
+
+Üniversite Bazlı Performans Değerlendirmeleri:
+	Lomza State University \left(Q=0.000\right):Ekonomi kriterinin ağırlığı (%38) nedeniyle modelin mutlak birincisidir. Lomza, Polonya'nın küçük ve lokal bir şehri olması sebebiyle yurt ücretleri, dışarıda yemek yeme maliyetleri ve öğrenci sepet endeksinde en düşük TRY karşılığı değerleri sunmuştur. Aylık Erasmus hibesinin öğrencilere yettiği tek destinasyon olması ampirik olarak bu sonucu üretmiştir.
+	University of Lisbon \left(Q=0.145\right):Sosyal yaşam (%29) ve güvenlik boyutlarında maksimum performans göstermesine ve NLP duygu skorunda (%84) zirvede yer almasına rağmen, Portekiz'deki son dönem konut/kira krizinden dolayı ekonomik puanda geriye düşmüş ve uzlaşık sıralamada ikinci sıraya yerleşmiştir.
+	University of Warsaw Q=0.220: Akademik kalitede (Scopus yayın sayıları) ve Wikipedia altyapı endeksinde çok güçlü veriler sunmuştur. Lomza'ya kıyasla bir başkent olması maliyetleri artırsa da dengeli ve kararlı yapısıyla üçüncülüğünü korumuştur.
+	University of Porto Q=0.295: Lizbon ile benzer karakteristiğe sahiptir. Eğitim kalitesi ortalama düzeyde olup, sosyal imkanları ve okyanus kıyısı avantajıyla Portekiz ekolünün istikrarlı bir temsilcisidir.
+	Vilnius University Q=0.410: Akademik başarı odaklı aramalarda öne çıkmaktadır. Scopus atıf endekslerinde oldukça başarılıdır; soğuk iklim dezavantajı sosyal algısını bir miktar törpülese de rasyonel bir alternatiftir.
+	University of Belgrade Q=0.580: Vizesiz seyahat imkânı sunması bütçe açısından bir avantaj gibi görünse de AB ülkesi olmaması nedeniyle hibe süreçlerindeki karmaşa ve GDELT güvenlik endeksindeki dalgalanmalar sıralamasını sınırda bırakmıştır.
+	University of Sofia Q=0.720: Ekonomik olarak uygun olmasına rağmen, Scopus yayın üretkenliğindeki zayıflık ve öğrenci yorumlarındaki düşük olumlu polarite (%61) nedeniyle zayıf gruptadır.
+	Ss. Cyril and Methodius University Q=1.000: Akademik yayın sayısı, sosyal imkanlar ve NLP algı skoru (%58) boyutlarının tamamında minimum performans göstererek modelin en son sırasına konumlanmıştır.
+5.5. K-Means ile Öğrenci Profil Kümeleme Bulguları
+Kullanıcıların tercih hassasiyetleri üzerinde koşturulan K-Means algoritması, öğrencileri 3 anlamlı profile ayırmıştır. Elde edilen profil segmentleri Tablo 5.4'te özetlenmiştir:
+Tablo 5.4: K-Means Öğrenci Tercih Profilleri
+Küme No	Belirlenmiş Öğrenci Profil Başlığı	Havuz Oranı (%)	Dominant Karar Faktörü
+Küme 1	Bütçe Odaklı Öğrenciler	45	Ekonomi / Kira Maliyeti
+Küme 2	Sosyal ve Kültürel Odaklılar	35	Kültürel Çeşitlilik / NLP Skoru
+Küme 3	Akademik Başarı Hedefleyenler	20	Scopus Yayın Sayısı
+Küme 1'de yer alan bütçe odaklı öğrenciler (%45) yaşam maliyetlerine maksimum hassasiyet gösterirken, Küme 2'deki sosyal odaklı grup (%35) Lizbon ve Porto gibi lokasyonlara yönelmektedir. Küme 3 ise tamamen akademik performans göstergelerine odaklanmaktadır.
+5.6. Model Doğrulama ve İstatistiki Yakınsama Sonuçları
+Model çıktılarının sahada doğrulanması amacıyla, “erasmus_alumni_survey.csv” doğrulama katmanındaki ampirik veriler analiz edilmiştir. Elde edilen doğruluk ve korelasyon metrikleri Tablo 5.5'te sunulmuştur:
+
+Tablo 5.5: OptiErasmus Model Doğrulama ve Yakınsama Matrisi
+Doğrulama Ölçütü	Elde Edilen Uyum Başarısı (%)	İstatistiki Anlamlılık
+Pearson Korelasyon Oranı	%96,4	Yüksek Derecede Anlamlı p<0.01
+Ortalama Memnuniyet Uyumu	%94,8	Yüksek Uyum
+Tekrar Tercih Etme Uyumu	%92,7	Güvenilir
+Tavsiye Etme Eğilim Uyumu	%95,6	Yüksek Güvenilirlik
+Analiz sonuçları, sistemin ürettiği teorik sıralamalar ile geçmiş öğrencilerin ampirik memnuniyet skorları arasında %96,4 oranında olağanüstü yüksek bir korelasyon olduğunu kanıtlamaktadır. Modelin ekonomi aramasında ilk sıraya koyduğu Lomza, anketlerde de 4.8 / 5.0 memnuniyet ve %91 tekrar tercih oranıyla yer alarak doğrulamayı ampirik olarak tamamlamıştır.
+
+5.7. Hipotezlerin Değerlendirilmesi
+Gerçekleştirilen BWM, VIKOR, NLP, K-Means ve korelasyon analizleri neticesinde, tezin başında kurulan yedi hipotezin tamamı test edilmiş ve doğrulanmıştır. Hipotezlerin nihai kabul durumları Tablo 5.6'da özetlenmiştir:
+
+Tablo 5.6: Araştırma Hipotezleri Sonuç Matrisi
+Hipotez No	Hipotez Tanımı	Analiz Çıktısı	Sonuç
+H1	Ekonomik faktörlerin karar üzerindeki anlamlı etkisi	w_1=0.38(1. Sıra)	KABUL
+H2	NLP duygu skorlarının destinasyon çekiciliğini açıklaması	%96,4 Korelasyon Uyumu	KABUL
+H3	BWM ağırlıklarının gerçek öncelikleri yansıtması	CR=0.04<0.10	KABUL
+H4	VIKOR sıralamalarının memnuniyet düzeyiyle pozitif ilişkisi	%94,8 Memnuniyet Uyumu	KABUL
+H5	K-Means'in öğrencileri anlamlı profillere ayırması	3 Belirgin Küme Ayrımı	KABUL
+H6	OptiErasmus'un daha etkili karar desteği sağlaması	Gerçek Zamanlı Dashboard	KABUL
+H7	Bütünleşik analitik yöntemlerin tercih doğruluğunu artırması	%96,4 Doğruluk Oranı	KABUL
+
+
+6. TARTIŞMA VE SONUÇ
+6.1. Araştırma Hipotezlerinin Literatür Ekseninde Tartışılması
+Bu araştırmada, Erasmus+ tercih sürecini bilimsel ve bütünsel bir mimaride desteklemek amacıyla geliştirilen OptiErasmus akıllı karar destek sisteminin performansı değerlendirilmiş ve elde edilen bulgular literatür çerçevesinde yorumlanmıştır. BWM analizi sonucunda ekonomi kriterinin 0.38 ağırlık değeri ile en önemli belirleyici çıkması, Sánchez vd. (2006) tarafından gerçekleştirilen kuramsal çalışmayla tam bir paralellik göstermektedir. 
+Araştırmacılar, uluslararası öğrencilerin karar verme süreçlerinde yaşam maliyetlerini ve ekonomik stabiliteyi temel itici güç (push-pull factors) olarak değerlendirdiğini belirtmiştir. Benzer şekilde Harju (2020) tarafından yapılan çalışmada da kira maliyetleri ve günlük harcama kalemlerinin tercih davranışları üzerinde doğrudan baskın olduğu saptanmıştır. Bu çalışmada ekonomik kriterlerin en yüksek ağırlığı almasının temel nedeni, hedef kitleyi oluşturan öğrencilerin satın alma gücü dinamikleri ve döviz kuru dalgalanmalarının son yıllarda rasyonel karar vermede çok daha kritik bir parametreye dönüşmüş olmasıdır.
+Sosyal medya platformlarından (YouTube) kazınan yapısal olmayan metinlerin duygu analizi süzgecinden geçirilerek sisteme entegre edilmesi ve Lizbon (%84), Vilnius (%79) gibi lokasyonların yüksek pozitif algı skorlarına ulaşması, Doda vd. (2024) tarafından ortaya konulan uluslararası öğrenci hareketliliği teorilerini ampirik olarak desteklemektedir. 
+Literatür, öğrencilerin karar süreçlerinde kurumsal statik web sitelerinden ziyade akran deneyimlerinden etkilendiğini savunmaktadır; mevcut çalışma bu olguyu doğrulamakla kalmayıp nitel duygu verisini ÇKKV modeline doğrudan sayısal bir kriter olarak enjekte ederek literatürdeki yöntemsel bir boşluğu doldurmuştur.
+BWM ağırlıklarının 0.04 tutarlılık oranına (CR) sahip olması, Rezaei (2015) tarafından önerilen matematiksel kararlılık sınırını başarıyla doğrulamaktadır. VIKOR sıralama çıktılarının erasmus_alumni_survey.csv dosyasındaki mezun memnuniyet anketleriyle gösterdiği %96,4'lük yüksek korelasyon başarısı ise Opricovic ve Tzeng (2004) tarafından geliştirilen uzlaşık çözüm modelinin Erasmus tercih problemi için en dengeli ve rasyonel sonuçları üreten algoritma olduğunu doğrulamaktadır. 
+Literatürde yer alan benzer eğitim KDS çalışmaları (Özdağoğlu ve Özdağoğlu, 2008; Teixeira vd., 2023) genellikle sadece teorik sıralamalar üretmekte, ancak bu sıralamaların sahadaki gerçek memnuniyetlerle olan istatistiksel yakınsamasını test etmemektedir. OptiErasmus, model doğrulama (validation) katmanıyla bu sınırlılığı aşmıştır. 
+Son olarak K-Means algoritmasının öğrencileri 3 homojen kümeye ayırması, tüm kullanıcılara tek tip öneri sunan geleneksel rehberlik sistemlerinin yetersizliğini ve akıllı kişiselleştirme algoritmalarının yönetim bilişim sistemlerindeki katma değerini ispatlamaktadır.
+6.2. Yönetsel Çıkarımlar, Sınırlılıklar ve Öneriler
+Bu araştırma sonucunda Erasmus tercih sürecinin çok kriterli bir karar problemi olduğu ve tek boyutlu yaklaşımlarla çözülemeyeceği doğrulanmıştır. Geliştirilen OptiErasmus karar destek sistemi, heterojen kaynaklardan beslenen 109.143 satırlık veri ambarını, NLP duygu analizini ve BWM-VIKOR algoritmalarını tek bir platform altında birleştirerek yüksek doğruluk oranına sahip kişiselleştirilmiş üniversite önerileri üretebilmiştir. Model doğrulama sonuçları, geliştirilen kurumsal sistem mimarisinin uygulanabilir, sürdürülebilir ve güvenilir olduğunu net bir şekilde ortaya koymuştur.
+Araştırmanın temel sınırlılığı, veri toplama sürecinin asenkron API çağrılarına dayanması ve hedef üniversitelerin belirli Avrupa lokasyonları (8 şehir) ile sınırlandırılmış olmasıdır. Gelecekte yapılacak çalışmalarda veri kapsamı genişletilebilir.
+
+Araştırma sonuçları doğrultusunda şu yönetsel ve akademik öneriler geliştirilebilir:
+	Üniversitelerin Erasmus koordinatörlükleri ve uluslararası ilişkiler ofisleri, öğrencilerin tercih süreçlerindeki bilgi asimetrisini azaltmak adına bu tarz veri temelli, analitik karar destek sistemlerinden resmi bir rehberlik aracı olarak yararlanmalıdır.
+	Ofislerin ikili anlaşma (bilateral agreements) stratejilerinde, hangi destinasyonların öğrenciler tarafından daha çok talep gördüğü ve yüksek memnuniyet ürettiği bu platformlar üzerinden iş zekâsı (BI) panelleriyle izlenmelidir.
+	Gelecekte yapılacak çalışmalarda, dosya tabanlı veri ambarı katmanı Apache Spark veya NoSQL tabanlı gerçek zamanlı akan büyük veri mimarilerine dönüştürülerek sistemin canlı veri yakalama kapasitesi artırılabilir.
+	Öneri mekanizmasına derin öğrenme tabanlı büyük dil modelleri (LLM) entegre edilerek, öğrencilere yapay zekâ destekli akıllı bir chatbot asistan katmanı sunulabilir ve karar kalitesi daha da zenginleştirilebilir.

@@ -1,0 +1,410 @@
+@page "/compare"
+@model OptiErasmus.Pages.CompareModel
+
+@{
+    ViewData["Title"] = "Şehir Karşılaştırma";
+
+    // Metrik kazananları hesapla (düşük kira/yemek → daha iyi, yüksek sosyal → daha iyi)
+    bool sehir1KazandiSosyal = Model.SecilenSehir1 != null && Model.SecilenSehir2 != null && Model.SecilenSehir1.SosyalSkor >= Model.SecilenSehir2.SosyalSkor;
+    bool sehir1KazandiYemek  = Model.SecilenSehir1 != null && Model.SecilenSehir2 != null && Model.SecilenSehir1.UcuzYemek  <= Model.SecilenSehir2.UcuzYemek;
+    bool sehir1KazandiKira   = Model.SecilenSehir1 != null && Model.SecilenSehir2 != null && Model.SecilenSehir1.Kira       <= Model.SecilenSehir2.Kira;
+
+    int skor1 = (sehir1KazandiSosyal ? 1 : 0) + (sehir1KazandiYemek ? 1 : 0) + (sehir1KazandiKira ? 1 : 0);
+    int skor2 = 3 - skor1;
+}
+
+<style>
+    /* ===== COMPARE PAGE PREMIUM ===== */
+    .compare-hero {
+        background: linear-gradient(135deg, #9999c2 0%, #7979b2 50%, #181e4b 100%);
+        border-radius: 32px;
+        padding: 56px 48px 40px;
+        margin-bottom: 48px;
+        position: relative;
+        overflow: hidden;
+    }
+    .compare-hero::before {
+        content: '';
+        position: absolute;
+        top: -80px; right: -80px;
+        width: 360px; height: 360px;
+        background: radial-gradient(circle, rgba(241,165,1,0.18) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .compare-hero::after {
+        content: '';
+        position: absolute;
+        bottom: -60px; left: -60px;
+        width: 280px; height: 280px;
+        background: radial-gradient(circle, rgba(223,105,81,0.15) 0%, transparent 70%);
+        pointer-events: none;
+    }
+    .compare-hero h2 { color: #fff; font-family: 'Volkhov', serif; }
+    .compare-hero p  { color: rgba(255,255,255,0.65); }
+
+    /* Seçici */
+    .city-select {
+        background: rgba(255,255,255,0.07);
+        border: 1.5px solid rgba(255,255,255,0.18);
+        color: #fff;
+        border-radius: 14px;
+        padding: 14px 20px;
+        font-size: 1rem;
+        font-weight: 600;
+        appearance: none;
+        cursor: pointer;
+        transition: 0.25s;
+        width: 100%;
+        backdrop-filter: blur(8px);
+    }
+    .city-select:focus { outline: none; border-color: var(--accent-orange); box-shadow: 0 0 0 3px rgba(241,165,1,0.25); }
+        .city-select option {
+            background: #9999c2;
+            color: #fff;
+        }
+
+    .vs-badge {
+        width: 64px; height: 64px;
+        background: linear-gradient(135deg, var(--accent-orange), var(--accent-coral));
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 900; font-size: 1.1rem; color: #fff;
+        box-shadow: 0 8px 32px rgba(241,165,1,0.45);
+        animation: pulseBadge 2.4s ease-in-out infinite;
+        flex-shrink: 0;
+    }
+    @@keyframes pulseBadge {
+        0%,100% { transform: scale(1); box-shadow: 0 8px 32px rgba(241,165,1,0.45); }
+        50%      { transform: scale(1.08); box-shadow: 0 12px 40px rgba(241,165,1,0.65); }
+    }
+
+    /* ===== CITY CARDS ===== */
+    .city-card {
+        border-radius: 28px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 20px 60px rgba(24,30,75,0.12);
+        transition: transform 0.35s cubic-bezier(0.175,0.885,0.32,1.275), box-shadow 0.35s;
+        position: relative;
+    }
+    .city-card:hover { transform: translateY(-6px); box-shadow: 0 30px 80px rgba(24,30,75,0.18); }
+    .city-card .city-img {
+        width: 100%; height: 230px; object-fit: cover;
+        display: block;
+    }
+    .city-card .city-info {
+        padding: 22px 24px 18px;
+        text-align: center;
+    }
+    .city-card .city-name {
+        font-size: 1.5rem; font-weight: 800;
+        font-family: 'Poppins', sans-serif;
+        color: var(--primary-navy);
+        margin-bottom: 4px;
+    }
+    .city-card .city-country {
+        font-size: 0.85rem; color: var(--secondary-text); font-weight: 500;
+        text-transform: uppercase; letter-spacing: 1px;
+    }
+    .winner-badge {
+        position: absolute; top: 14px; left: 14px;
+        background: linear-gradient(135deg, #f1a501, #df6951);
+        color: #fff; font-size: 0.72rem; font-weight: 800;
+        padding: 5px 13px; border-radius: 20px;
+        text-transform: uppercase; letter-spacing: 1px;
+        box-shadow: 0 4px 12px rgba(241,165,1,0.5);
+    }
+    .overall-score {
+        display: flex; align-items: center; justify-content: center; gap: 8px;
+        padding: 10px 0 4px;
+    }
+    .score-dot {
+        width: 30px; height: 30px; border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-weight: 800; font-size: 0.85rem; color: #fff;
+    }
+
+    /* ===== METRICS COLUMN ===== */
+    .metrics-col {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+        justify-content: center;
+    }
+    .metric-row {
+        background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+        border-radius: 18px;
+        padding: 18px 20px;
+        box-shadow: 0 4px 20px rgba(24,30,75,0.06);
+        border: 1.5px solid rgba(24,30,75,0.06);
+        transition: 0.3s;
+    }
+    .metric-row:hover { box-shadow: 0 8px 28px rgba(24,30,75,0.1); transform: scale(1.02); }
+    .metric-label {
+        font-size: 0.7rem; font-weight: 800; letter-spacing: 1.5px;
+        text-transform: uppercase; color: var(--secondary-text);
+        text-align: center; margin-bottom: 12px;
+    }
+    .metric-icon { font-size: 1.5rem; text-align: center; margin-bottom: 10px; }
+    .metric-values {
+        display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    }
+    .metric-val {
+        font-size: 1.05rem; font-weight: 800;
+        border-radius: 10px; padding: 7px 14px;
+        min-width: 68px; text-align: center;
+        transition: 0.2s;
+    }
+    .metric-val.winner {
+        background: linear-gradient(135deg, #2B9348, #34a853);
+        color: #fff; box-shadow: 0 4px 14px rgba(43,147,72,0.35);
+    }
+    .metric-val.loser {
+        background: #f0f2f8; color: #9aa0bc;
+    }
+    .metric-vs-icon { color: var(--secondary-text); font-size: 1.3rem; flex-shrink: 0; }
+
+    /* Progress bar */
+    .progress-wrap { margin-top: 10px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 0.72rem; color: var(--secondary-text); margin-bottom: 4px; }
+    .prog-track { height: 6px; background: #eef0f8; border-radius: 99px; overflow: hidden; }
+    .prog-fill { height: 100%; border-radius: 99px; transition: width 0.8s cubic-bezier(0.25,0.46,0.45,0.94); }
+
+    /* Summary banner */
+    .summary-banner {
+        background: linear-gradient(135deg, #9999c2, #181e4b);
+        border-radius: 24px; padding: 32px 40px;
+        color: #fff; text-align: center;
+        margin-top: 40px;
+        box-shadow: 0 16px 48px rgba(24,30,75,0.2);
+        position: relative; overflow: hidden;
+    }
+    .summary-banner::before {
+        content:''; position:absolute; top:-50%; left:-50%;
+        width:200%; height:200%;
+        background: radial-gradient(ellipse at 60% 40%, rgba(241,165,1,0.12) 0%, transparent 60%);
+    }
+    .summary-city { font-size: 2rem; font-weight: 900; font-family:'Poppins',sans-serif; color: var(--accent-orange); }
+
+    /* Arrow decoration */
+    .select-wrapper { position: relative; }
+    .select-wrapper::after {
+        content: '▾'; position: absolute; right: 16px; top: 50%;
+        transform: translateY(-50%); color: rgba(255,255,255,0.6);
+        pointer-events: none; font-size: 1.2rem;
+    }
+
+    /* Responsive */
+    @@media (max-width: 768px) {
+        .compare-hero { padding: 36px 22px 28px; }
+        .metrics-col { margin: 24px 0; }
+    }
+</style>
+
+<!-- HERO HEADER -->
+<div class="compare-hero">
+    <div class="text-center mb-4 position-relative z-1">
+        <span class="d-inline-block px-3 py-1 rounded-pill mb-3" style="background:rgba(241,165,1,0.18); color: var(--accent-orange); font-size:0.75rem; font-weight:700; letter-spacing:2px; text-transform:uppercase;">
+            Şehir Karşılaştırma
+        </span>
+        <h2 class="display-5 fw-bold mb-2">Kafa Kafaya Karşılaştır</h2>
+        <p class="mb-0 fs-6">İki Erasmus destinasyonunu yan yana koy, doğru kararı ver.</p>
+    </div>
+
+    <!-- Seçim Formu -->
+    <form method="get" class="position-relative z-1">
+        <div class="row align-items-center justify-content-center g-3">
+            <div class="col-md-4">
+                <div class="select-wrapper">
+                    <select id="Sehir1" name="Sehir1" class="city-select" onchange="this.form.submit()">
+                        @foreach (var sehir in Model.SehirListesi)
+                        {
+                            <option value="@sehir" selected="@(sehir == Model.Sehir1 ? "selected" : null)">@sehir</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="col-auto d-flex justify-content-center">
+                <div class="vs-badge">VS</div>
+            </div>
+            <div class="col-md-4">
+                <div class="select-wrapper">
+                    <select id="Sehir2" name="Sehir2" class="city-select" onchange="this.form.submit()">
+                        @foreach (var sehir in Model.SehirListesi)
+                        {
+                            <option value="@sehir" selected="@(sehir == Model.Sehir2 ? "selected" : null)">@sehir</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- KARŞILAŞTIRMA PANELİ -->
+@if (Model.SecilenSehir1 != null && Model.SecilenSehir2 != null)
+{
+    <div class="row g-4 align-items-stretch">
+
+        <!-- Şehir 1 Kartı -->
+        <div class="col-lg-4">
+            <div class="city-card h-100" style="animation: slideInLeft 0.6s ease-out;">
+                @if (skor1 >= 2)
+                {
+                    <div class="winner-badge">🏆 Öne Çıkıyor</div>
+                }
+                <img src="@Model.SecilenSehir1.Resim" class="city-img" alt="@Model.Sehir1" />
+                <div class="city-info">
+                    <div class="city-name">@Model.Sehir1</div>
+                    <div class="city-country">@Model.SecilenSehir1.Ulke</div>
+                    <div class="overall-score mt-3">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <div class="score-dot" style="background: @(i < skor1 ? "linear-gradient(135deg,#f1a501,#df6951)" : "#eef0f8"); color: @(i < skor1 ? "#fff" : "#c8cde8"); font-size: 0.7rem;">
+                                @(i < skor1 ? "✓" : "·")
+                            </div>
+                        }
+                        <span class="ms-2 fw-bold" style="color:var(--primary-navy); font-size:0.85rem;">@skor1/3 puan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Metrikler -->
+        <div class="col-lg-4">
+            <div class="metrics-col" style="animation: fadeInUp 0.6s ease-out 0.15s both;">
+
+                <!-- Sosyal Skor -->
+                <div class="metric-row">
+                    <div class="metric-label">👥 Sosyal & Güvenlik Skoru</div>
+                    <div class="metric-values">
+                        <div class="metric-val @(sehir1KazandiSosyal ? "winner" : "loser")">
+                            @Model.SecilenSehir1.SosyalSkor
+                        </div>
+                        <span class="metric-vs-icon">⚡</span>
+                        <div class="metric-val @(!sehir1KazandiSosyal ? "winner" : "loser")">
+                            @Model.SecilenSehir2.SosyalSkor
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-label">
+                            <span>@Model.Sehir1</span><span>@Model.Sehir2</span>
+                        </div>
+                        <div class="prog-track">
+                            <div class="prog-fill" style="width:@(Model.SecilenSehir1.SosyalSkor)%; background: linear-gradient(90deg, #2B9348, #34a853);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ucuz Yemek -->
+                <div class="metric-row">
+                    <div class="metric-label">🍽️ Ucuz Restoran Fiyatı</div>
+                    <div class="metric-values">
+                        <div class="metric-val @(sehir1KazandiYemek ? "winner" : "loser")">
+                            ₺@Model.SecilenSehir1.UcuzYemek.ToString("N0")
+                        </div>
+                        <span class="metric-vs-icon">⚡</span>
+                        <div class="metric-val @(!sehir1KazandiYemek ? "winner" : "loser")">
+                            ₺@Model.SecilenSehir2.UcuzYemek.ToString("N0")
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-label">
+                            <span>@Model.Sehir1</span><span>@Model.Sehir2</span>
+                        </div>
+                        <div class="prog-track">
+                            @{
+                                double maxYemek = Math.Max(Model.SecilenSehir1.UcuzYemek, Model.SecilenSehir2.UcuzYemek);
+                                double pct1y = maxYemek > 0 ? (Model.SecilenSehir1.UcuzYemek / maxYemek) * 100 : 50;
+                            }
+                            <div class="prog-fill" style="width:@pct1y%; background: linear-gradient(90deg, #f1a501, #df6951);"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Aylık Kira -->
+                <div class="metric-row">
+                    <div class="metric-label">🏠 Öğrenci Kira (yurt / paylaşımlı oda)</div>
+                    <div class="metric-values">
+                        <div class="metric-val @(sehir1KazandiKira ? "winner" : "loser")">
+                            ₺@Model.SecilenSehir1.Kira.ToString("N0")
+                        </div>
+                        <span class="metric-vs-icon">⚡</span>
+                        <div class="metric-val @(!sehir1KazandiKira ? "winner" : "loser")">
+                            ₺@Model.SecilenSehir2.Kira.ToString("N0")
+                        </div>
+                    </div>
+                    <div class="progress-wrap">
+                        <div class="progress-label">
+                            <span>@Model.Sehir1</span><span>@Model.Sehir2</span>
+                        </div>
+                        <div class="prog-track">
+                            @{
+                                double maxKira = Math.Max(Model.SecilenSehir1.Kira, Model.SecilenSehir2.Kira);
+                                double pct1k = maxKira > 0 ? (Model.SecilenSehir1.Kira / maxKira) * 100 : 50;
+                            }
+                            <div class="prog-fill" style="width:@pct1k%; background: linear-gradient(90deg, #181e4b, #4a5bd1);"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Şehir 2 Kartı -->
+        <div class="col-lg-4">
+            <div class="city-card h-100" style="animation: slideInRight 0.6s ease-out;">
+                @if (skor2 >= 2)
+                {
+                    <div class="winner-badge">🏆 Öne Çıkıyor</div>
+                }
+                <img src="@Model.SecilenSehir2.Resim" class="city-img" alt="@Model.Sehir2" />
+                <div class="city-info">
+                    <div class="city-name">@Model.Sehir2</div>
+                    <div class="city-country">@Model.SecilenSehir2.Ulke</div>
+                    <div class="overall-score mt-3">
+                        @for (int i = 0; i < 3; i++)
+                        {
+                            <div class="score-dot" style="background: @(i < skor2 ? "linear-gradient(135deg,#f1a501,#df6951)" : "#eef0f8"); color: @(i < skor2 ? "#fff" : "#c8cde8"); font-size: 0.7rem;">
+                                @(i < skor2 ? "✓" : "·")
+                            </div>
+                        }
+                        <span class="ms-2 fw-bold" style="color:var(--primary-navy); font-size:0.85rem;">@skor2/3 puan</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Özet Banner -->
+    <div class="summary-banner" style="animation: fadeInUp 0.7s ease-out 0.3s both;">
+        <div class="position-relative z-1">
+            @if (skor1 > skor2)
+            {
+                <p class="mb-1 text-white-50" style="font-size:0.85rem; text-transform:uppercase; letter-spacing:2px;">ÖNERİLEN DESTİNASYON</p>
+                <div class="summary-city">@Model.Sehir1</div>
+                <p class="mt-2 mb-4" style="color:rgba(255,255,255,0.65);">@skor1 kategoride daha avantajlı çıktı.</p>
+            }
+            else if (skor2 > skor1)
+            {
+                <p class="mb-1 text-white-50" style="font-size:0.85rem; text-transform:uppercase; letter-spacing:2px;">ÖNERİLEN DESTİNASYON</p>
+                <div class="summary-city">@Model.Sehir2</div>
+                <p class="mt-2 mb-4" style="color:rgba(255,255,255,0.65);">@skor2 kategoride daha avantajlı çıktı.</p>
+            }
+            else
+            {
+                <div class="summary-city" style="font-size:1.5rem;">🤝 Dengeli Karşılaşma!</div>
+                <p class="mt-2 mb-4" style="color:rgba(255,255,255,0.65);">Her iki şehir eşit puanda. Sihirbazı kullanarak kişisel tercihlerinize göre karar verin.</p>
+            }
+            <a href="/Anket" class="btn fw-bold px-5 py-3 rounded-3" style="background: linear-gradient(135deg, #f1a501, #df6951); color:#fff; box-shadow: 0 8px 24px rgba(241,165,1,0.4); font-size:0.95rem;">
+                <i class="bi bi-stars me-2"></i>Kişiselleştirilmiş Sihirbazı Başlat
+            </a>
+        </div>
+    </div>
+}
+
+<style>
+    @@keyframes slideInLeft  { from { opacity:0; transform: translateX(-30px); } to { opacity:1; transform: translateX(0); } }
+    @@keyframes slideInRight { from { opacity:0; transform: translateX(30px);  } to { opacity:1; transform: translateX(0); } }
+    @@keyframes fadeInUp     { from { opacity:0; transform: translateY(24px);  } to { opacity:1; transform: translateY(0); } }
+</style>

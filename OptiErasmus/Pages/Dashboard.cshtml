@@ -1,0 +1,170 @@
+@page
+@model OptiErasmus.Pages.DashboardModel
+@using System.Text.Json
+@{
+    ViewData["Title"] = "Global Veri Gösterge Paneli";
+}
+
+<!-- Premium Background Decals -->
+<div style="position: absolute; top: -100px; right: -100px; width: 500px; height: 500px; background-color: #FFF1DA; border-radius: 50%; opacity: 0.5; z-index: -1;"></div>
+<div style="position: absolute; bottom: -100px; left: -100px; width: 300px; height: 300px; background-color: #FFE5E0; border-radius: 50%; opacity: 0.4; z-index: -1;"></div>
+
+<div class="text-center mb-5 pt-3 position-relative z-1">
+    <p class="fw-bold mb-2" style="color: var(--secondary-text); letter-spacing: 2px; text-transform: uppercase;">ANALİZLER</p>
+    <h2 class="display-5 fw-bold mb-5 pb-3">Global Veri Gösterge Paneli</h2>
+</div>
+
+<div class="container mb-5 pb-5">
+    <div class="row g-4">
+        <!-- Academic Publications -->
+        <div class="col-lg-6">
+            <div class="card border-0 h-100 dashboard-card bg-white position-relative">
+                <div class="card-body p-4 pt-4 shadow-sm" style="border-radius: 24px;">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center me-3 shadow-sm" style="width:45px; height:45px; background:var(--accent-coral); color:white;">
+                            <i class="bi bi-journal-text fs-5"></i>
+                        </div>
+                        <h5 class="fw-bold mb-0" style="color: var(--primary-navy);">Akademik Yayın Sayıları</h5>
+                    </div>
+                    <div id="academicChart" style="min-height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Social Scores -->
+        <div class="col-lg-6">
+            <div class="card border-0 h-100 dashboard-card bg-white position-relative">
+                <div class="card-body p-4 pt-4 shadow-sm" style="border-radius: 24px;">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center me-3 shadow-sm" style="width:45px; height:45px; background:var(--accent-orange); color:white;">
+                            <i class="bi bi-people-fill fs-5"></i>
+                        </div>
+                        <h5 class="fw-bold mb-0" style="color: var(--primary-navy);">Sosyal Yaşam Skorları</h5>
+                    </div>
+                    <div id="socialChart" style="min-height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sentiment Analysis -->
+        <div class="col-lg-6">
+            <div class="card border-0 h-100 dashboard-card bg-white position-relative">
+                <div class="card-body p-4 pt-4 shadow-sm" style="border-radius: 24px;">
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center me-3 shadow-sm" style="width:45px; height:45px; background:#2B9348; color:white;">
+                            <i class="bi bi-chat-quote-fill fs-5"></i>
+                        </div>
+                        <div>
+                            <h5 class="fw-bold mb-0" style="color: var(--primary-navy);">Duygu Analizi</h5>
+                            <small class="text-muted" style="font-size: 0.85rem;">Tüm şehirlerdeki on binlerce yorumun kümülatif dağılımıdır.</small>
+                        </div>
+                    </div>
+                    <div id="sentimentChart" style="min-height: 280px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Economic Costs -->
+        <div class="col-lg-6">
+            <div class="card border-0 h-100 dashboard-card bg-white position-relative">
+                <div class="card-body p-4 pt-4 shadow-sm" style="border-radius: 24px;">
+                    <div class="d-flex align-items-center mb-4">
+                        <div class="rounded-circle d-flex justify-content-center align-items-center me-3 shadow-sm" style="width:45px; height:45px; background:var(--primary-navy); color:white;">
+                            <i class="bi bi-cash-coin fs-5"></i>
+                        </div>
+                        <h5 class="fw-bold mb-0" style="color: var(--primary-navy);">Günlük Harcama (TL)</h5>
+                    </div>
+                    <div id="economicChart" style="min-height: 300px;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .dashboard-card { 
+        border-radius: 24px; 
+        transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+        box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    }
+    .dashboard-card:hover { 
+        transform: translateY(-8px); 
+        box-shadow: 0 20px 40px rgba(0,0,0,0.08) !important; 
+    }
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var academicData = @Html.Raw(JsonSerializer.Serialize(Model.AcademicData));
+        var socialData = @Html.Raw(JsonSerializer.Serialize(Model.SocialScoreData));
+        var sentimentData = @Html.Raw(JsonSerializer.Serialize(Model.SentimentData));
+        var economicData = @Html.Raw(JsonSerializer.Serialize(Model.EconomicDashboardData));
+
+        // 1. Academic Chart
+        var topAcademic = academicData.slice(0, 10); // Show top 10 to not crowd the chart
+        var academicOptions = {
+            series: [{
+                name: 'Yayın Sayısı',
+                data: topAcademic.map(d => d.PublicationCount)
+            }],
+            chart: { type: 'bar', height: 320, toolbar: { show: false }, fontFamily: 'Poppins, sans-serif' },
+            colors: ['#DF6951'],
+            plotOptions: { bar: { borderRadius: 4, horizontal: true } },
+            dataLabels: { enabled: false },
+            xaxis: { categories: topAcademic.map(d => {
+                var name = d.University;
+                return name.length > 25 ? name.substring(0,25) + '...' : name;
+            }) }
+        };
+        new ApexCharts(document.querySelector("#academicChart"), academicOptions).render();
+
+        // 2. Social Chart
+        var topSocial = socialData.slice(0, 12);
+        var socialOptions = {
+            series: [{
+                name: 'Sosyal Skor',
+                data: topSocial.map(d => d.Score.toFixed(2))
+            }],
+            chart: { type: 'area', height: 320, toolbar: { show: false }, fontFamily: 'Poppins, sans-serif' },
+            colors: ['#F1A501'],
+            fill: { type: 'gradient', gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.1 } },
+            dataLabels: { enabled: false },
+            xaxis: { categories: topSocial.map(d => d.City) },
+            stroke: { curve: 'smooth', width: 3 }
+        };
+        new ApexCharts(document.querySelector("#socialChart"), socialOptions).render();
+
+        // 3. Sentiment Donut Chart
+        var totalOlumlu = sentimentData.filter(d => d.Sentiment === 'Olumlu').reduce((sum, curr) => sum + curr.Count, 0);
+        var totalNötr = sentimentData.filter(d => d.Sentiment === 'Nötr').reduce((sum, curr) => sum + curr.Count, 0);
+        var totalOlumsuz = sentimentData.filter(d => d.Sentiment === 'Olumsuz').reduce((sum, curr) => sum + curr.Count, 0);
+
+        var sentimentOptions = {
+            series: [totalOlumlu, totalNötr, totalOlumsuz],
+            chart: { type: 'donut', height: 320, fontFamily: 'Poppins, sans-serif' },
+            labels: ['Olumlu', 'Nötr', 'Olumsuz'],
+            colors: ['#2B9348', '#F1A501', '#181E4B'],
+            plotOptions: { donut: { size: '65%' } },
+            legend: { position: 'bottom' }
+        };
+        new ApexCharts(document.querySelector("#sentimentChart"), sentimentOptions).render();
+
+        // 4. Economic Chart
+        var cities = economicData.map(item => item.City);
+        var avgPrices = economicData.map(item => Math.round(item.Price));
+
+        var economicOptions = {
+            series: [{
+                name: 'Ortalama (₺)',
+                data: avgPrices
+            }],
+            chart: { type: 'bar', height: 320, toolbar: { show: false }, fontFamily: 'Poppins, sans-serif' },
+            colors: ['#181E4B'],
+            plotOptions: { bar: { borderRadius: 4, columnWidth: '40%' } },
+            dataLabels: { enabled: false },
+            xaxis: { categories: cities }
+        };
+        new ApexCharts(document.querySelector("#economicChart"), economicOptions).render();
+    });
+</script>

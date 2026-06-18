@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - OptiErasmus</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Volkhov:wght@400;700&family=Noto+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/OptiErasmus.styles.css" asp-append-version="true" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+</head>
+<body>
+    <header class="premium-header z-3">
+        <nav class="navbar navbar-expand-lg navbar-light bg-transparent py-4 mb-3">
+            <div class="container">
+                <a class="navbar-brand d-flex align-items-center gap-2 fw-bold" asp-area="" asp-page="/Index"
+                   style="font-family: 'Volkhov', serif; font-size: 1.9rem; letter-spacing: -0.5px; text-decoration: none;">
+                    <img src="~/images/logo.png" style="height: 58px; width: auto; filter: drop-shadow(0 3px 8px rgba(241,165,1,0.35));">
+                    <span style="line-height:1;">
+                        <span style="color: var(--primary-navy);">Opti</span><span style="color: var(--accent-orange);">Erasmus</span>
+                    </span>
+                </a>
+
+                <button class="navbar-toggler border-0 shadow-sm" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-end">
+                    <ul class="navbar-nav gap-lg-4 gap-2 align-items-center">
+                        
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" asp-area="" asp-page="/Dashboard">Veri Analizleri</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold" asp-area="" asp-page="/Rehber">Üniversiteler</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold d-flex align-items-center gap-1" asp-area="" asp-page="/Compare">
+                                <i class="bi bi-arrow-left-right"></i> Karşılaştır
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link fw-bold d-flex align-items-center gap-1" asp-area="" asp-page="/Deneyim">
+                                <i class="bi bi-people"></i> Öğrenci Deneyimi
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link btn fw-bold rounded-3 px-4 ms-lg-3 shadow-sm border-2" asp-area="" asp-page="/Anket" style="border-radius: 50px !important; background-color: #ffd966; color: #FF8C00; border-color: #FF8C00;" onmouseover="this.style.backgroundColor='#FFD700'; this.style.color='#FF8C00';" onmouseout="this.style.backgroundColor='#FFD700'; this.style.color='#FF8C00';">
+                                <i class="bi bi-magic"></i> Sihirbazı Başlat
+                            </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Sayfa İçeriği -->
+    <div class="container position-relative z-1">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-center py-4 mt-5">
+        <div class="container text-muted small">
+            &copy; 2026 - <strong>OptiErasmus Intelligence Platform</strong> - BWM & VIKOR Karar Modeli ile geliştirilmiştir.
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

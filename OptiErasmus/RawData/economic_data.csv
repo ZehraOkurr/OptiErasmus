@@ -1,0 +1,87 @@
+﻿City,Criteria,Price,Currency,PriceEUR
+Warsaw,Meal at an Inexpensive Restaurant,42.5,PLN,9.78
+Warsaw,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),35.0,PLN,8.05
+Warsaw,Domestic Draft Beer (0.5 Liter),18.5,PLN,4.25
+Warsaw,Imported Beer (0.33 Liter Bottle),18.0,PLN,4.14
+Warsaw,Cappuccino (Regular Size),16.59,PLN,3.82
+Warsaw,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",9.23,PLN,2.12
+Warsaw,Bottled Water (0.33 Liter),8.75,PLN,2.01
+Warsaw,Bottled Water (1.5 Liter),2.67,PLN,0.61
+Warsaw,Domestic Beer (0.5 Liter Bottle),4.75,PLN,1.09
+Warsaw,One-Way Ticket (Local Transport),4.4,PLN,1.01
+Warsaw,Monthly Public Transport Pass (Regular Price),110.0,PLN,25.3
+Lisbon,Meal at an Inexpensive Restaurant,13.0,EUR,13.0
+Lisbon,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),10.0,EUR,10.0
+Lisbon,Domestic Draft Beer (0.5 Liter),3.0,EUR,3.0
+Lisbon,Imported Beer (0.33 Liter Bottle),3.0,EUR,3.0
+Lisbon,Cappuccino (Regular Size),2.34,EUR,2.34
+Lisbon,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",2.18,EUR,2.18
+Lisbon,Bottled Water (0.33 Liter),1.38,EUR,1.38
+Lisbon,Bottled Water (1.5 Liter),0.75,EUR,0.75
+Lisbon,Domestic Beer (0.5 Liter Bottle),1.12,EUR,1.12
+Lisbon,One-Way Ticket (Local Transport),2.0,EUR,2.0
+Lisbon,Monthly Public Transport Pass (Regular Price),40.0,EUR,40.0
+Sofia,Meal at an Inexpensive Restaurant,11.13,EUR,11.13
+Sofia,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),9.61,EUR,9.61
+Sofia,Domestic Draft Beer (0.5 Liter),2.81,EUR,2.81
+Sofia,Imported Beer (0.33 Liter Bottle),3.07,EUR,3.07
+Sofia,Cappuccino (Regular Size),2.65,EUR,2.65
+Sofia,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",1.95,EUR,1.95
+Sofia,Bottled Water (0.33 Liter),1.4,EUR,1.4
+Sofia,Bottled Water (1.5 Liter),0.67,EUR,0.67
+Sofia,Domestic Beer (0.5 Liter Bottle),0.96,EUR,0.96
+Sofia,One-Way Ticket (Local Transport),0.82,EUR,0.82
+Sofia,Monthly Public Transport Pass (Regular Price),25.54,EUR,25.54
+Skopje,Meal at an Inexpensive Restaurant,400.0,MKD,6.48
+Skopje,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),350.0,MKD,5.67
+Skopje,Domestic Draft Beer (0.5 Liter),150.0,MKD,2.43
+Skopje,Imported Beer (0.33 Liter Bottle),180.0,MKD,2.92
+Skopje,Cappuccino (Regular Size),117.82,MKD,1.91
+Skopje,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",104.89,MKD,1.7
+Skopje,Bottled Water (0.33 Liter),70.07,MKD,1.14
+Skopje,Bottled Water (1.5 Liter),31.96,MKD,0.52
+Skopje,Domestic Beer (0.5 Liter Bottle),59.39,MKD,0.96
+Skopje,One-Way Ticket (Local Transport),40.0,MKD,0.65
+Skopje,Monthly Public Transport Pass (Regular Price),1500.0,MKD,24.3
+Vilnius,Meal at an Inexpensive Restaurant,12.0,EUR,12.0
+Vilnius,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),7.0,EUR,7.0
+Vilnius,Domestic Draft Beer (0.5 Liter),5.0,EUR,5.0
+Vilnius,Imported Beer (0.33 Liter Bottle),5.0,EUR,5.0
+Vilnius,Cappuccino (Regular Size),3.19,EUR,3.19
+Vilnius,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",1.69,EUR,1.69
+Vilnius,Bottled Water (0.33 Liter),2.19,EUR,2.19
+Vilnius,Bottled Water (1.5 Liter),0.78,EUR,0.78
+Vilnius,Domestic Beer (0.5 Liter Bottle),1.45,EUR,1.45
+Vilnius,One-Way Ticket (Local Transport),1.0,EUR,1.0
+Vilnius,Monthly Public Transport Pass (Regular Price),38.0,EUR,38.0
+Belgrade,Meal at an Inexpensive Restaurant,1300.0,RSD,11.05
+Belgrade,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),1200.0,RSD,10.2
+Belgrade,Domestic Draft Beer (0.5 Liter),350.0,RSD,2.98
+Belgrade,Imported Beer (0.33 Liter Bottle),400.0,RSD,3.4
+Belgrade,Cappuccino (Regular Size),300.77,RSD,2.56
+Belgrade,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",294.8,RSD,2.51
+Belgrade,Bottled Water (0.33 Liter),233.68,RSD,1.99
+Belgrade,Bottled Water (1.5 Liter),71.84,RSD,0.61
+Belgrade,Domestic Beer (0.5 Liter Bottle),91.54,RSD,0.78
+Porto,Meal at an Inexpensive Restaurant,11.5,EUR,11.5
+Porto,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),8.0,EUR,8.0
+Porto,Domestic Draft Beer (0.5 Liter),3.0,EUR,3.0
+Porto,Imported Beer (0.33 Liter Bottle),4.0,EUR,4.0
+Porto,Cappuccino (Regular Size),2.13,EUR,2.13
+Porto,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",2.12,EUR,2.12
+Porto,Bottled Water (0.33 Liter),1.21,EUR,1.21
+Porto,Bottled Water (1.5 Liter),0.67,EUR,0.67
+Porto,Domestic Beer (0.5 Liter Bottle),1.11,EUR,1.11
+Porto,One-Way Ticket (Local Transport),1.55,EUR,1.55
+Porto,Monthly Public Transport Pass (Regular Price),40.0,EUR,40.0
+Lomza,Meal at an Inexpensive Restaurant,36.12,PLN,8.31
+Lomza,Combo Meal at McDonald's (or Equivalent Fast-Food Meal),29.75,PLN,6.84
+Lomza,Domestic Draft Beer (0.5 Liter),15.72,PLN,3.62
+Lomza,Imported Beer (0.33 Liter Bottle),15.3,PLN,3.52
+Lomza,Cappuccino (Regular Size),14.1,PLN,3.24
+Lomza,"Soft Drink (Coca-Cola or Pepsi, 0.33 Liter Bottle)",7.85,PLN,1.81
+Lomza,Bottled Water (0.33 Liter),7.44,PLN,1.71
+Lomza,Bottled Water (1.5 Liter),2.27,PLN,0.52
+Lomza,Domestic Beer (0.5 Liter Bottle),4.04,PLN,0.93
+Lomza,One-Way Ticket (Local Transport),3.74,PLN,0.86
+Lomza,Monthly Public Transport Pass (Regular Price),93.5,PLN,21.51
