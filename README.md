@@ -205,11 +205,13 @@ OptiErasmus/
 
 | **Özellik / Sayfa** | **Önizleme Görseli** |
 |---|---|
-| **Yönetici Gösterge Paneli (Dashboard)** | ![Gösterge Paneli Arayüzü](<img width="828" height="777" alt="göstergepaneli" src="https://github.com/user-attachments/assets/e10a1ca7-2253-4597-96a8-cbed03a79742" />![Uploading anket1.png…]()
+| **Yönetici Gösterge Paneli (Dashboard)** |(<img width="828" height="777" alt="göstergepaneli" src="https://github.com/user-attachments/assets/e10a1ca7-2253-4597-96a8-cbed03a79742" />
 ) |
-| **BWM Tercih Anketi - Adım 1 (Kriter İnceleme)** | ![BWM Tercih Anketi Adım 1](images/anket1.png) |
-| **BWM Tercih Anketi - Adım 2 (Öncelik Seçimi)** | ![BWM Tercih Anketi Adım 2](images/anket2.png) |
-| **BWM Tercih Anketi - Adım 3 (Kıyaslama ve Puanlama)** | ![BWM Tercih Anketi Adım 3](images/anket3.png) |
+| **BWM Tercih Anketi - Adım 1 (Kriter İnceleme)** | ![BWM Tercih Anketi Adım 1](<img width="1003" height="912" alt="anket2" src="https://github.com/user-attachments/assets/7f9d32a2-3856-4f08-b0b9-3b97d7575391" />
+) |
+| **BWM Tercih Anketi - Adım 2 (Öncelik Seçimi)** | ![BWM Tercih Anketi Adım 2](<img width="1003" height="912" alt="anket2" src="https://github.com/user-attachments/assets/4b517717-2568-4e8d-a0ce-e5c26c6b8b2e" />
+) |
+| **BWM Tercih Anketi - Adım 3 (Kıyaslama ve Puanlama)** | ![BWM Tercih Anketi Adım 3](<img width="679" height="898" alt="anket3" src="https://github.com/user-attachments/assets/e543a23d-7447-4aac-b9ef-7dbaec5cab31" />) |
 
 ---
 
