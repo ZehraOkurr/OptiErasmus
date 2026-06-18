@@ -206,10 +206,13 @@ OptiErasmus/
 | **Özellik / Sayfa** | **Önizleme Görseli** |
 |---|---|
 | **Yönetici Gösterge Paneli (Dashboard)** |(<img width="828" height="777" alt="göstergepaneli" src="https://github.com/user-attachments/assets/e10a1ca7-2253-4597-96a8-cbed03a79742" />
+(
 |
 | **BWM Tercih Anketi - Adım 1 (Kriter İnceleme)** | (<img width="1003" height="912" alt="anket2" src="https://github.com/user-attachments/assets/7f9d32a2-3856-4f08-b0b9-3b97d7575391" />
+(
 |
 | **BWM Tercih Anketi - Adım 2 (Öncelik Seçimi)** | (<img width="1003" height="912" alt="anket2" src="https://github.com/user-attachments/assets/4b517717-2568-4e8d-a0ce-e5c26c6b8b2e" />
+(
 |
 ---
 
@@ -237,15 +240,3 @@ Açık kaynak topluluğuna katkıda bulunmak, öğrenmek ve ilham vermek için h
 5. Bir Pull Request (Çekme İsteği) açın.
 
 ---
-
-## 📄 Lisans
-
-Bu proje MIT Lisansı altında dağıtılmaktadır. Daha fazla bilgi için `LICENSE` dosyasına göz atabilirsiniz.
-
----
-
-## 📧 İletişim
-
-**Proje Yöneticisi** - [E-posta Adresiniz](mailto:email@example.com)
-
-Proje Bağlantısı: [https://github.com/username/OptiErasmus](https://github.com/username/OptiErasmus)
