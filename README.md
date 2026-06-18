@@ -1,6 +1,6 @@
 # 🎓 OptiErasmus
 
-OptiErasmus, üniversite öğrencilerinin en ideal Erasmus değişim destinasyonlarını seçmelerine yardımcı olmak amacıyla geliştirilmiş, veri odaklı ve profesyonel bir **Çok Kriterli Karar Verme (MCDM)** öneri sistemi ve gösterge panelidir (dashboard). Güvenlik, yaşam maliyeti, akademik başarı ve sosyal yorumları matematiksel olarak analiz ederek, öğrencilere kişiselleştirilmiş ve uzlaşık-optimal destinasyon sıralaması sunar.
+OptiErasmus, üniversite öğrencilerinin en ideal Erasmus değişim destinasyonlarını seçmelerine yardımcı olmak amacıyla geliştirilmiş, veri odaklı ve profesyonel bir **Çok Kriterli Karar Verme (ÇKKV)** öneri sistemi ve gösterge panelidir (dashboard). Güvenlik, yaşam maliyeti, akademik başarı ve sosyal yorumları matematiksel olarak analiz ederek, öğrencilere kişiselleştirilmiş ve uzlaşık-optimal destinasyon sıralaması sunar.
 
 ---
 
@@ -200,15 +200,12 @@ OptiErasmus/
 |---|---|
 | **Yönetici Gösterge Paneli (Dashboard)** |(<img width="828" height="777" alt="göstergepaneli" src="https://github.com/user-attachments/assets/e10a1ca7-2253-4597-96a8-cbed03a79742" /> )
 |
-|---|---|
 | **BWM Tercih Anketi - Adım 1 (Kriter İnceleme)** |
 (<img width="1003" height="912" alt="anket2" src="https://github.com/user-attachments/assets/7f9d32a2-3856-4f08-b0b9-3b97d7575391" /> )
 |
-|---|---|
 | **BWM Tercih Anketi - Adım 2 (Öncelik Seçimi)** | 
 (<img width="1003" height="912" alt="anket2" src="https://github.com/user-attachments/assets/4b517717-2568-4e8d-a0ce-e5c26c6b8b2e" /> )
 |
-|---|---|
 ---
 
 ## 🗺️ Yol Haritası
