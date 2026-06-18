@@ -204,7 +204,6 @@ OptiErasmus/
 |---|---|
 | **BWM Tercih Anketi - Adım 2 (Öncelik Seçimi)** |<img width="1003" height="912" alt="anket2" src="https://github.com/user-attachments/assets/4b517717-2568-4e8d-a0ce-e5c26c6b8b2e" /> 
 |---|---|
-|
 ---
 
 ## 🗺️ Yol Haritası
