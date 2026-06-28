@@ -4,9 +4,6 @@ OptiErasmus, üniversite öğrencilerinin en ideal Erasmus değişim destinasyon
 
 ---
 
-|---|---|
-| **Proje Tanıtım Videosu** | https://github.com/user-attachments/assets/41f85f24-aec2-42c8-a275-4997671d7564 |
-
 ## 📌 İçindekiler
 - [🎓 OptiErasmus](#-optierasmus)
   - [📌 İçindekiler](#-i̇çindekiler)
@@ -234,3 +231,5 @@ Açık kaynak topluluğuna katkıda bulunmak, öğrenmek ve ilham vermek için h
 5. Bir Pull Request (Çekme İsteği) açın.
 
 ---
+
+| **Proje Tanıtım Videosu** | https://github.com/user-attachments/assets/41f85f24-aec2-42c8-a275-4997671d7564 |
